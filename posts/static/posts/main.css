@@ -1,0 +1,14 @@
+/* css for our project */
+/* using bootstrap for most of layout and spacing here we will use font and color */
+
+
+nav.navbar.navbar-expand-sm.bg {
+    background-color: rgb(94, 13, 94);
+    font-size: 25px;   
+}
+
+
+div.container-fluid.text-center.bg {
+    background-color: rgb(159, 83, 24);
+}
+

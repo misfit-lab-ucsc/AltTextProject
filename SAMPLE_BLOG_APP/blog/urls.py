@@ -12,6 +12,8 @@ UserPostListView,
 # . means current directory
 # empty path as home page
 # name because we want reverse lookup on route
+
+# in future for new paths maybe create dictionary and iterate over url patterns appending
 urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
     # django give ability add variables to route like id of post this url is for list of posts
