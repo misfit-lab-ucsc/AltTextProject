@@ -22,6 +22,3 @@ class Post(models.Model):
     def get_absolute_url(self):
         # reverse functon used generate url for named url pattern in this case its our post
         return reverse('post-detail',kwargs = {'pk': self.pk})
-
-
-
