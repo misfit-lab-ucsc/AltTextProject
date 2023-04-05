@@ -78,7 +78,7 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     def form_valid(self,form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-    
+        
     def test_func(self):
         # get exact post that is being viewed
         post = self.get_object()

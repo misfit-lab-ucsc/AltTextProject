@@ -3,18 +3,23 @@ from django.urls import path, include
 from . import views
 
 # import our views here
-from .views import (PostCreateView)
+from .views import (PostCreateView,PostListView,PostDetailView,PostUpdateView,PostDeleteView)
 
 urlpatterns = [
     path('',views.home, name='posts-home'),
     # about page
     path('about/',views.about,name='posts-about'),
     # add ability to post
-    path('post/new/',PostCreateView.as_view(),name='post-create'),
+    path('post/new/',PostCreateView.as_view(),name='posts-create'),
     # update
-    # path(),
+    path('post/<int:pk>/update/',PostUpdateView.as_view(),name='posts-update'),
     # delete
-    # path(),
-    # see and list post
+    path('post/<int:pk>/delete/',PostDeleteView.as_view(),name='posts-delete'),
+    # see post view
+    path('post/<int:pk>/',PostDetailView.as_view(),name='post-detail'),
+    #  list post
+    path('post/',PostListView.as_view(),name='post-list'),
     # path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
+
+
 ]

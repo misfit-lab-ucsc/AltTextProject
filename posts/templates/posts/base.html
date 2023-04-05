@@ -38,7 +38,7 @@
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a href="{% url 'post-create' %}" class="nav-link">Post</a>
+              <a href="{% url 'posts-create' %}" class="nav-link">Post</a>
             </li>
             <li class="nav-item">
               <a href="{% url 'profile' %}" class="nav-link">Profile</a>
@@ -63,12 +63,15 @@
   
   {% endblock %}  
   <div>
-      {% for x in images %}
-          <a href="{{ x.photo.url }}">
+    {% for x in posts %}
+      <a href="{{ x.photo.url }}">
+          <a href="{% url 'posts-update' pk=x.pk %}">
               <img src="{{ x.photo.url }}" alt="{{ x.altText }}">
               <p>{{ x.title }}</p>
           </a>
-      {% endfor %}
+      </a>
+    {% endfor %}
+
   </div>    
 </body>
 </html>
