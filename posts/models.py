@@ -42,7 +42,6 @@ class Post(models.Model):
     permissions = (
         ('can_edit_post','Can edit post'),
     )
-    a = 1
     
 
 
