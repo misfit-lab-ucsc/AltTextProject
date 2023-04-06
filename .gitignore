@@ -7,14 +7,6 @@
 AltText/settings.py
 .idea
 
-<<<<<<< HEAD
-=======
-
-# Media files
-media/
-
-# hello world
->>>>>>> d7a8490 (deleted .DS_Store)
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -28,6 +20,7 @@ __pycache__/
 
 # Log files
 *.log
+
 
 
 
