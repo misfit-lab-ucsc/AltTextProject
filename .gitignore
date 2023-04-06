@@ -8,7 +8,7 @@ AltText/settings.py
 # Media files
 media/
 
-
+# hello world
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
