@@ -7,12 +7,6 @@
 AltText/settings.py
 .idea
 
-# hello world
-
-# Media files
-media/
-
-# hello world
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -26,6 +20,7 @@ __pycache__/
 
 # Log files
 *.log
+
 
 
 
