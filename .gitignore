@@ -4,6 +4,11 @@
 AltText/settings.py
 .idea
 
+
+# Media files
+media/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -16,8 +21,7 @@ __pycache__/
 # Log files
 *.log
 
-# Media files
-media/
+
 
 # Static files
 posts/static
