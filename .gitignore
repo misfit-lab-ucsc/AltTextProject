@@ -35,3 +35,6 @@ posts/static
 # Other Django-related files and directories
 *.pyc
 .vscode/
+
+# local migration files we dont need in github repo
+posts/migrations/
