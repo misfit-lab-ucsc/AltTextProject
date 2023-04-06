@@ -1,6 +1,7 @@
 # Hiding our settings.py contains sensitive information and configuration
 # As well as other files to keep our code base in github concise some files we can hide
 
+<<<<<<< HEAD
 # Hiding our settings.py contains sensitive information and configuration
 # As well as other files to keep our code base in github concise some files we can hide
 
@@ -9,12 +10,20 @@ AltText/settings.py
 
 <<<<<<< HEAD
 =======
+=======
+AltText/settings.py
+.idea
+
+>>>>>>> d7a8490bdb4bb4474cbbd82584f2698695e8399b
 
 # Media files
 media/
 
 # hello world
+<<<<<<< HEAD
 >>>>>>> d7a8490 (deleted .DS_Store)
+=======
+>>>>>>> d7a8490bdb4bb4474cbbd82584f2698695e8399b
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -31,7 +40,10 @@ __pycache__/
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d7a8490bdb4bb4474cbbd82584f2698695e8399b
 # Static files
 posts/static
 
