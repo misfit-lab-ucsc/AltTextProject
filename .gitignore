@@ -1,3 +1,40 @@
-# uncomment line below important
+# Hiding our settings.py contains sensitive information and configuration
+# As well as other files to keep our code base in github concise some files we can hide
+
 AltText/settings.py
 .idea
+
+# hello world
+
+# Media files
+media/
+
+# hello world
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database files
+*.sqlite3
+*.db
+.DS_Store
+
+
+# Log files
+*.log
+
+
+
+# Static files
+posts/static
+
+# Secret keys and settings files
+*.env
+*.secret
+*.key
+*.pem
+
+# Other Django-related files and directories
+*.pyc
+.vscode/
