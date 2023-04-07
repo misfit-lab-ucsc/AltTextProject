@@ -1,0 +1,36 @@
+{% extends 'posts/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="form p-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="profile-pic">
+            <img src="{{ user.profile.image.url }}" alt="profile-picture" class="rounded-circle account-img">
+        </div>
+        <div class="profile-info">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary"> {{user.email }}</p>
+        </div>
+        <!-- form here -->
+        <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">
+                    Profile Info
+                </legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outine-info" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+    
+{% endblock content %}
