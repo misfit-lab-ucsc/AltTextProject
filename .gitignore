@@ -37,4 +37,6 @@ posts/static
 .vscode/
 
 # local migration files we dont need in github repo
-posts/migrations/
+# db schema of our apps we have 2 so far
+# posts/migrations/
+# users/migrations/
