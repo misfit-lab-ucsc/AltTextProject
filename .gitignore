@@ -24,7 +24,7 @@ __pycache__/
 *.log
 
 # Static files
-posts/static
+# posts/static
 
 # Secret keys and settings files
 *.env
