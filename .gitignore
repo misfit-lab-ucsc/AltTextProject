@@ -36,6 +36,7 @@ __pycache__/
 *.pyc
 .vscode/
 
+# we need these files so we commenting them out
 # local migration files we dont need in github repo
 # db schema of our apps we have 2 so far
 # posts/migrations/

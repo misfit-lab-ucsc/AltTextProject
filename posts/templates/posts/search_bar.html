@@ -1,0 +1,31 @@
+
+
+<!-- 
+<form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+    <div class="input-group">
+        <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+    </div>
+</form> -->
+
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="mx-auto my-4" style="max-width: 600px;">
+          <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <div class="input-group">
+              <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

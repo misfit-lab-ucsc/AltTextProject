@@ -1,0 +1,22 @@
+{% extends 'posts/base.html' %}
+    {% block content %}
+        <h1> Post Title : {{ object.title }}</h1>
+        <img src="{{ object.photo.url }}" alt="{{ object.alt_text }}">
+        <p>Posted {{ object.date_posted }}</p>
+        <p>Alt Text : {{ object.alt_text }}</p>
+
+        <!-- update and delete posts based on some conditions  -->
+        <!-- checking to see if the user is logged in  -->
+        {% if user.is_authenticated %}
+            <!-- checking to see if the user is author of the post or is a superuser/admin -->
+            {% if user == post.author or user.is_superuser %}
+                <div>
+                    <a href="{% url 'posts-update' pk=post.pk %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'posts-delete' pk=post.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+
+            {% endif %}
+        {% endif %}
+
+        
+    {% endblock %}

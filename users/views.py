@@ -26,6 +26,7 @@ def register(request,*args,**kwargs):
 # view our profile of our users
 @login_required
 def profile(request):
+    print('you are logged in')
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST,instance=request.user)
         p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
@@ -43,6 +44,9 @@ def profile(request):
             elif p_form.is_valid():
                 p_form.save()
                 messages.success(request,'Your profile picture has been updated')
+            else:
+                messages.warning(request,'Something went wrong please try again')
+            
             
     else:
         # not post request

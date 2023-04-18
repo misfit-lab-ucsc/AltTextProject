@@ -28,7 +28,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # where we will have our alt text home page
-    path('',include('posts.urls')),
+    path('',include('posts.urls'),),
     # register new user
     path('register/',user_views.register,name='register'),
     # viewing our users profile
@@ -44,4 +44,9 @@ urlpatterns = [
     path('password-reset-complete/',auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html',extra_context={'title':'Password Reset Complete'}),name='password_reset_complete'),
 
 
-] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+] 
+# + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,9 +2,17 @@
 {% block content %}
 <div class="form p-4">
     <h1 class="mb-4">Update Post</h1>
+    <div>
+      <p>Post Title : {{ object.title }}</p>
+      <img src="{{ object.photo.url }}" alt="{{ object.altText }}">
+      <p> Posted {{ object.date_posted }}</p>
+      <p> {{ object.title }} post created by {{ object.author }}</p>
+      <p>Last updated by user : {{ object.last_updated_by }}</p>
+    </div>
     <form method="post" enctype="multipart/form-data" class="border p-4">
       {% csrf_token %}
       {{ form.as_p }}
+      
       <button type="submit" class="btn btn-primary mt-3">Update</button>
     </form>
   </div>

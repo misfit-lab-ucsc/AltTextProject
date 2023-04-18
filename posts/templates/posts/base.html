@@ -9,6 +9,9 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
     <!-- Custom CSS and JS -->
     <link rel="stylesheet" href="{% static 'posts/main.css' %}">
     <!-- title tag for our application -->
@@ -20,9 +23,10 @@
 </head>
 <body>
   <div class="container-fluid text-center bg py-3">
-    <h1 class="p-0 m-0"><span id="text">Archive by Army</span></h1>
+        <h1 class="p-0 m-0"><span id="text">Archive by Army</span></h1>
   </div>
-  <nav class="navbar navbar-expand-sm navbar-dark bg py-1">
+ 
+  <nav class="navbar navbar-expand-sm navbar-dark bg py-2 px-1">
     <div class="container-fluid">
       <a href="{% url 'posts-home' %}" class="navbar-brand">AxA</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" type="button">
@@ -60,18 +64,18 @@
     </div>
   </nav>
   {% block content %}
-  
+    {% include 'posts/search_bar.html' %}
+    <div>
+      {% for x in posts %}
+        <a href="{{ x.photo.url }}">
+            <a href="{% url 'post-detail' pk=x.pk %}">
+                <img src="{{ x.photo.url }}" alt="{{ x.alt_text }}">
+                <p>{{ x.title }}</p>
+            </a>
+        </a>
+      {% endfor %}
+    </div>
+    <a href="{% url 'post-list' %}">POST LIST VIEW</a>
   {% endblock %}  
-  <div>
-    {% for x in posts %}
-      <a href="{{ x.photo.url }}">
-          <a href="{% url 'posts-update' pk=x.pk %}">
-              <img src="{{ x.photo.url }}" alt="{{ x.altText }}">
-              <p>{{ x.title }}</p>
-          </a>
-      </a>
-    {% endfor %}
-
-  </div>    
 </body>
 </html>

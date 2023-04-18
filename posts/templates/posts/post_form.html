@@ -1,7 +1,7 @@
 {% extends 'posts/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1>Create a Post</h1>
+    <!-- <h1>Create a Post</h1> -->
     <div class="form p-4">
         {% if messages %}
             {% for message in messages %}
@@ -15,7 +15,7 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">
-                  Blog Post
+                  Alt Text Post
                 </legend>
                 <!--render form as paragraph tag .as_p-->
                 {{ form|crispy}}

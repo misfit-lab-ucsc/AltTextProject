@@ -1,6 +1,9 @@
 /* css for our project */
 /* using bootstrap for most of layout and spacing here we will use font and color */
 
+* {
+    font-family: 'Comfortaa', cursive;
+}
 
 nav.navbar.navbar-expand-sm.bg {
     /* 49007A 
