@@ -63,9 +63,11 @@
       </div>
     </div>
   </nav>
+  <!-- work on layout of our homepage using either flex or grid most likely grid -->
   {% block content %}
     {% include 'posts/search_bar.html' %}
-    <div>
+
+    <!-- <div class = 'd-flex my-5 mx-5 p-0'>
       {% for x in posts %}
         <a href="{{ x.photo.url }}">
             <a href="{% url 'post-detail' pk=x.pk %}">
@@ -74,8 +76,29 @@
             </a>
         </a>
       {% endfor %}
+    </div> -->
+
+
+    <div class="container my-5">
+      <div class="row">
+        {% for x in posts %}
+          <div class="col-md-4">
+            <div class="card">
+              <img src="{{ x.photo.url }}" alt="{{ x.alt_text }}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{ x.title }}</h5>
+                <p class="card-text">{{ x.content }}</p>
+                <a href="{% url 'post-detail' pk=x.pk %}" class="btn btn-primary">Read More</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
+
+
     <a href="{% url 'post-list' %}">POST LIST VIEW</a>
+
   {% endblock %}  
 </body>
 </html>

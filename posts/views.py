@@ -36,11 +36,34 @@ from django.views.generic import (
 # importing random to get random posts
 import random
 
+# importing Pillow to resize images
+from PIL import Image
+
+# importing io to save image to memory
+from io import BytesIO
+
+# importing uploaded file to save image to memory
+from django.core.files.uploadedfile import InMemoryUploadedFile
+
+# importing os to get file extension
+import os
+
+# importing temporary uploaded file to save image to memory
+from django.core.files.uploadedfile import TemporaryUploadedFile
+
+
+
 
 
 # -----------------------------------------------------------------------------------------------
 # Create your views here.
 # -----------------------------------------------------------------------------------------------
+
+
+# Register additional MIME types and file extensions
+Image.register_mime('image/jpeg', '.jpg')
+Image.register_mime('image/png', '.png')
+Image.register_mime('image/gif', '.gif')
 
 def home(request):
     # all of our data from db we created for alt text post
@@ -48,7 +71,7 @@ def home(request):
     # check if there are at least 3 posts
     if len(all_posts) >= 3:
         # get 3 random posts
-        random_posts = random.sample(list(all_posts),3)
+        random_posts = random.sample(list(all_posts), len(all_posts))
     else:
         # if there are less than 3 posts just get all posts
         random_posts = all_posts
@@ -105,6 +128,7 @@ def search(request):
 
 
 # view to create posts using class based views
+# POST CREATE VIEW NEED TO HANDLE DIFFERENT IMAGE TYPES WHEN SAVING AND RESIZING
 class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
     fields = ['title','photo','alt_text']
@@ -113,6 +137,7 @@ class PostCreateView(LoginRequiredMixin,CreateView):
         form.instance.author = self.request.user
         # message so feedback
         messages.success(self.request,'Your post was created successfully')
+        # call the super method to save the form instance from the parent class
         return super().form_valid(form)
     
 # WORK ON UPDATE LIST AND DELETE VIEW AS WELL AS UI FOR IT
