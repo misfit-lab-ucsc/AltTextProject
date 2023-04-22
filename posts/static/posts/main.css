@@ -5,6 +5,10 @@
     font-family: 'Comfortaa', cursive;
 }
 
+/* body {
+    background-color: gray;
+} */
+
 nav.navbar.navbar-expand-sm.bg {
     /* 49007A 
     7A00CC
@@ -28,5 +32,12 @@ div.container-fluid.text-center.bg {
     -webkit-text-stroke: 1px rgb(255, 255, 255);
     /* implement text shadow instead of stroke because support all browsers  */
     font-size: 55px;
+}
 
+/* get hover affect for post in home page */
+div.col-md-4:hover {
+    background-color: #7A00CC;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 black;
 }

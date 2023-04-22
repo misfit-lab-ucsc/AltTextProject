@@ -83,13 +83,10 @@
       <div class="row">
         {% for x in posts %}
           <div class="col-md-4">
-            <div class="card">
-              <img src="{{ x.photo.url }}" alt="{{ x.alt_text }}" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">{{ x.title }}</h5>
-                <p class="card-text">{{ x.content }}</p>
-                <a href="{% url 'post-detail' pk=x.pk %}" class="btn btn-primary">Read More</a>
-              </div>
+            <div class="card my-3">
+              <a href="{% url 'post-detail' pk=x.pk %}">
+                <img src="{{ x.photo.url }}" alt="{{ x.alt_text }}" class="card-img-top">
+              </a>
             </div>
           </div>
         {% endfor %}
