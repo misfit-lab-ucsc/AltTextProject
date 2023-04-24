@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
     <!-- Custom CSS and JS -->
     <link rel="stylesheet" href="{% static 'posts/main.css' %}">
+    <script src="{% static 'posts/main.js' %}" defer></script>
     <!-- title tag for our application -->
     {% if title %}
       <title>AxA - {{ title }}</title>
@@ -63,6 +64,11 @@
       </div>
     </div>
   </nav>
+
+  {% block extra_buttons %}
+    <button id="theme-toggle">Dark Mode</button>
+  {% endblock %}
+
   <!-- work on layout of our homepage using either flex or grid most likely grid -->
   {% block content %}
     {% include 'posts/search_bar.html' %}

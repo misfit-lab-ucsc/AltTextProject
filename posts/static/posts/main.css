@@ -41,3 +41,24 @@ div.col-md-4:hover {
     border-radius: 10px;
     box-shadow: 0 0 10px 0 black;
 }
+
+/* change width and height of our image post */
+img.postimg {
+    display: block;
+    margin: 0 auto;
+    width: 40%; /* change the width to 50% */
+    border-radius: 10px;
+    float: left; /* add float-left property to move image to the left */
+    margin-right: 20px; /* add some margin to the right to separate the image from the text */
+}
+
+div.alignel {
+    display: flex;
+    align-items: center;
+}
+
+/* dark theme for css */
+body.dark-theme { 
+    background-color: #000000 !important;; 
+    color: #fff;
+}
