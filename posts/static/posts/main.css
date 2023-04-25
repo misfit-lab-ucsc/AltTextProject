@@ -59,6 +59,27 @@ div.alignel {
 
 /* dark theme for css */
 body.dark-theme { 
-    background-color: #000000 !important;; 
+    background-color: #000000 !important; 
     color: #fff;
+}
+
+/* button#theme-toggle {
+    background-color: #252525;
+    color:white;
+    font-family: 'Comfortaa', cursive;
+} */
+
+/* #theme-toggle */
+button.light-theme {
+    padding:10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: black;
+    font-family: 'Comfortaa', cursive;
+}
+
+button.light-theme.light-button {
+    background-color: #000000;
+    color: white;
+    font-family: 'Comfortaa', cursive;
 }
