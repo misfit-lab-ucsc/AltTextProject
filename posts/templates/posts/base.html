@@ -11,7 +11,9 @@
     {% bootstrap_javascript %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google font as well as font awesome icons -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Custom CSS and JS -->
     <link rel="stylesheet" href="{% static 'posts/main.css' %}">
     <script src="{% static 'posts/main.js' %}" defer></script>
@@ -72,18 +74,6 @@
   <!-- work on layout of our homepage using either flex or grid most likely grid -->
   {% block content %}
     {% include 'posts/search_bar.html' %}
-
-    <!-- <div class = 'd-flex my-5 mx-5 p-0'>
-      {% for x in posts %}
-        <a href="{{ x.photo.url }}">
-            <a href="{% url 'post-detail' pk=x.pk %}">
-                <img src="{{ x.photo.url }}" alt="{{ x.alt_text }}">
-                <p>{{ x.title }}</p>
-            </a>
-        </a>
-      {% endfor %}
-    </div> -->
-
 
     <div class="container my-5">
       <div class="row">
