@@ -41,3 +41,19 @@ __pycache__/
 # db schema of our apps we have 2 so far
 # posts/migrations/
 # users/migrations/
+
+# exclude requirements.txt
+requirements.txt
+
+# exclude Elastic Beanstalk configuration files
+.ebextensions/
+.ebignore
+.elasticbeanstalk/
+
+# Elastic Beanstalk deployment artifacts
+*.zip
+*.war
+*.jar
+
+# Elastic Beanstalk logs
+logs/
