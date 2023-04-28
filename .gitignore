@@ -36,7 +36,24 @@ __pycache__/
 *.pyc
 .vscode/
 
+# we need these files so we commenting them out
 # local migration files we dont need in github repo
-# db scheme of our apps we have 2 so far
+# db schema of our apps we have 2 so far
 # posts/migrations/
 # users/migrations/
+
+# exclude requirements.txt
+requirements.txt
+
+# exclude Elastic Beanstalk configuration files
+.ebextensions/
+.ebignore
+.elasticbeanstalk/
+
+# Elastic Beanstalk deployment artifacts
+*.zip
+*.war
+*.jar
+
+# Elastic Beanstalk logs
+logs/
