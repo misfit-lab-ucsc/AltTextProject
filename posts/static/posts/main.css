@@ -1,0 +1,85 @@
+/* css for our project */
+/* using bootstrap for most of layout and spacing here we will use font and color */
+
+* {
+    font-family: 'Comfortaa', cursive;
+}
+
+/* body {
+    background-color: gray;
+} */
+
+nav.navbar.navbar-expand-sm.bg {
+    /* 49007A 
+    7A00CC
+    */
+    background-color: #49007A;
+    font-size: 25px;   
+}
+
+
+div.container-fluid.text-center.bg {
+    background-color: #7A00CC;
+    color: black;
+  
+}
+
+#text {
+    /* color: black;
+    border: 2px solid black;
+    padding: 0;
+    display: inline-block; */
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+    /* implement text shadow instead of stroke because support all browsers  */
+    font-size: 55px;
+}
+
+/* get hover affect for post in home page */
+div.col-md-4:hover {
+    background-color: #7A00CC;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 black;
+}
+
+/* change width and height of our image post */
+img.postimg {
+    display: block;
+    margin: 0 auto;
+    width: 40%; /* change the width to 50% */
+    border-radius: 10px;
+    float: left; /* add float-left property to move image to the left */
+    margin-right: 20px; /* add some margin to the right to separate the image from the text */
+}
+
+div.alignel {
+    display: flex;
+    align-items: center;
+}
+
+/* dark theme for css */
+body.dark-theme { 
+    background-color: #000000 !important; 
+    color: #fff;
+}
+
+/* button#theme-toggle {
+    background-color: #252525;
+    color:white;
+    font-family: 'Comfortaa', cursive;
+} */
+
+/* #theme-toggle */
+button.light-theme {
+    padding:10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: black;
+    font-family: 'Comfortaa', cursive;
+}
+
+button.light-theme.light-button {
+    background-color: #000000;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+}

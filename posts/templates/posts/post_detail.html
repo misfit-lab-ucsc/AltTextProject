@@ -1,0 +1,28 @@
+{% extends 'posts/base.html' %}
+    {% block content %}
+        <div class="alignel">
+            <h1 class="text-left"> Post Title : {{ object.title }}</h1>
+            <img src="{{ object.photo.url }}" alt="{{ object.alt_text }}" class = 'postimg'>
+        </div>
+        <p>Posted {{ object.date_posted }}</p>
+        <p>Alt Text : {{ object.alt_text }}</p>
+
+        <!-- update and delete posts based on some conditions  -->
+        <!-- checking to see if the user is logged in  -->
+        <!-- if user is not logged in  -->
+        {% if not user.is_authenticated %}
+            <a href="{% url 'login' %}">Want to add tags to update post click me</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <!-- checking to see if the user is author of the post or is a superuser/admin -->
+            {% if user == post.author or user.is_superuser %}
+                <div>
+                    <a href="{% url 'posts-update' pk=post.pk %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'posts-delete' pk=post.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+
+            {% endif %}
+        {% endif %}
+
+        
+    {% endblock %}

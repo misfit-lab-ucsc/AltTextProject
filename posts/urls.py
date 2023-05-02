@@ -5,6 +5,8 @@ from . import views
 # import our views here
 from .views import (PostCreateView,PostListView,PostDetailView,PostUpdateView,PostDeleteView)
 
+
+
 urlpatterns = [
     path('',views.home, name='posts-home'),
     # about page
@@ -15,11 +17,11 @@ urlpatterns = [
     path('post/<int:pk>/update/',PostUpdateView.as_view(),name='posts-update'),
     # delete
     path('post/<int:pk>/delete/',PostDeleteView.as_view(),name='posts-delete'),
-    # see post view
+    # see post view detail view
     path('post/<int:pk>/',PostDetailView.as_view(),name='post-detail'),
     #  list post
     path('post/',PostListView.as_view(),name='post-list'),
-    # path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
-
+    # search posts view
+    path('search/',views.search,name='search'),
 
 ]

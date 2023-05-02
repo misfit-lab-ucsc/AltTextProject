@@ -1,0 +1,20 @@
+<!-- where our search results will be  -->
+{% extends 'posts/base.html' %}
+{% block content %}
+    {% include 'posts/search_bar.html' %}
+    {% if posts %}
+    <h1>results for {{ query }}</h1>
+        <ul>
+        {% for post in posts %}
+            <li>
+                <img src="{{ post.photo.url }}" alt="{{ post.alt_text }}">
+                <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a>
+                
+                <p>alt_text : {{ post.alt_text }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+{% endblock %}
