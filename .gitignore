@@ -43,7 +43,7 @@ __pycache__/
 # users/migrations/
 
 # exclude requirements.txt
-requirements.txt
+# requirements.txt
 
 # exclude Elastic Beanstalk configuration files
 .ebextensions/
