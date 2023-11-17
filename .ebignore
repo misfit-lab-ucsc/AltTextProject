@@ -1,36 +1,6 @@
 .idea
-
-# Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
-*$py.class
-
-# Database files
-# *.sqlite3
-*.db
-.DS_Store
-
-# Log files
-*.log
-
-# Secret keys and settings files
-*.env
-*.secret
-*.key
-*.pem
-
-# Other Django-related files and directories
-*.pyc
-.vscode/
-
-# Elastic Beanstalk deployment artifacts
-*.zip
-*.war
-*.jar
-
-# Elastic Beanstalk logs
-logs/
-
-# GitHub files
 .git
 .github
+.gitignore
+README.md
