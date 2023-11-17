@@ -1,7 +1,7 @@
 name: EB Deploy Site to AWS
 on:
   push:
-    branches: [ main ]
+    branches: []
 jobs:
   deploy:
     runs-on: ubuntu-latest
