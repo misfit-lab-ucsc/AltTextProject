@@ -13,13 +13,13 @@ nav.navbar.navbar-expand-sm.bg {
     /* 49007A 
     7A00CC
     */
-    background-color: #49007A;
+    background-color: #8305d7;
     font-size: 25px;   
 }
 
 
 div.container-fluid.text-center.bg {
-    background-color: #7A00CC;
+    background-color: #8305d7;
     color: black;
   
 }
@@ -36,7 +36,7 @@ div.container-fluid.text-center.bg {
 
 /* get hover affect for post in home page */
 div.col-md-4:hover {
-    background-color: #7A00CC;
+    background-color: #8305d7;
     color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 black;
