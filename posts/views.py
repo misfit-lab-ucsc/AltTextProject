@@ -86,6 +86,10 @@ def home(request):
 def about(request):
     return render(request,'posts/about.html',{'title' : 'About'})
 
+# upload feature
+def upload(request):
+    return render(request,'posts/upload.html',{'title' : 'Upload'})
+
 # search view we are going to do it based on alt text or title of post for now TBD / early stage
 def search(request):
     # Check if request method is GET

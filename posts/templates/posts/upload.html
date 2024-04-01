@@ -1,0 +1,121 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+<head>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .content-wrapper {
+            text-align: center;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .section label {
+            display: block;
+            margin-bottom: -10px;
+            font-size: 24px; /* Adjust the font size */
+            color: purple; /* Set the color to purple */
+            font-weight: bold; /* Make the font bold */
+        }
+
+        /* Style for the input elements */
+        .section input[type="text"],
+        .section textarea,
+        .section input[type="file"] {
+            width: 150%; /* Set the width to 100% */
+            padding: 10px; /* Add padding */
+            box-sizing: border-box;
+            border: solid; /* Set border color */
+            border-radius: 50px; /* Add curved edges */ /*DO NOT CHANGE*/
+            font-size: 16px; /* Adjust font size */
+            border-width: 10px; /* border width*/
+            color: purple; /*color*/
+        }
+        /* Style for the input elements */
+        #title {
+            height: 70px; /* Set the height for the title input */
+        }
+
+        #tags {
+            height: 150px; /* Set the height for the tags input */
+        }
+
+        #altText {
+            height: 150px; /* Set the height for the alttext input */
+        }
+        /* For upload file */
+        .file-label {
+            width: 150%; /* Set the width to 100% */
+            padding: 10px; /* Add padding */
+            box-sizing: border-box;
+            border: dotted; /* Set border color */
+            border-radius: 50px; /* Add curved edges */ /*DO NOT CHANGE*/
+            font-size: 16px; /* Adjust font size */
+            border-width: 10px; /* border width*/
+            color: purple; /*color*/
+            height: 500px; /* Set the height for the alttext input */
+            text-decoration: underline; /* Add underline */
+            text-align: center; /* Center horizontally */
+            padding: 200px 0; /* Center vertically */
+            cursor: pointer; /* Add cursor pointer */
+            pointer-events: none; /* Disable mouse events on the label */
+        }
+
+        /* Non-clickable text style */
+        .non-clickable-text {
+            display: inline-block; /* Make text inline */
+            margin-left: 10px; /* Add left margin */
+            font-size: 24px; /* Adjust the font size */
+            color: purple; /* Set the color to purple */
+            font-weight: bold; /* Make the font bold */
+            cursor: pointer;
+            pointer-events: none; /* Disable mouse events */
+        }
+
+        /* Enable mouse events for the text within the label */
+        .file-label span {
+            pointer-events: auto;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('choose-file-text').addEventListener('click', function() {
+                alert('Popup function goes here');
+                // Replace alert with your actual popup function
+            });
+        });
+    </script>
+</head>
+<div class="container">
+    <div class="content-wrapper">
+        <div class="section">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" placeholder="Some title">
+        </div>
+        <div class="section">
+            <label for="tags">Tags (Seperate tags by using a comma):</label><br>
+            <input type="text" id="tags" name="tags" placeholder="Tag1, Tag2, Tag3">
+        </div>
+        <div class="section">
+            <label for="altText">Alt Text:</label><br>
+            <textarea id="altText" name="altText" placeholder="ALT Text goes here"></textarea>
+        </div>
+        <div class="section">
+            <div class="custom-file-input">
+                <input type="file" id="upload" name="upload" class="input-file" style="display: none;">
+                <label for="upload" class="file-label">
+                    <span id="choose-file-text">Choose File</span>
+                    <span class="non-clickable-text">or drag it here.</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

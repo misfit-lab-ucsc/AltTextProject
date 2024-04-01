@@ -23,5 +23,7 @@ urlpatterns = [
     path('post/',PostListView.as_view(),name='post-list'),
     # search posts view
     path('search/',views.search,name='search'),
+    # upload page
+    path('upload/',views.upload,name='posts-upload'),
 
 ]
