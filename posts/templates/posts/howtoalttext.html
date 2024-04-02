@@ -1,0 +1,20 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting to YouTube Video</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Redirect function
+        function redirectToYouTube() {
+            window.open('https://www.youtube.com/watch?v=YU8b4bpEEag', '_blank');
+        }
+        // Call the redirect function after a delay
+        setTimeout(redirectToYouTube, 100);
+    </script>
+    <p>If you are not redirected automatically, <a href="https://www.youtube.com/watch?v=YU8b4bpEEag" target="_blank">click here</a>.</p>
+</body>
+</html>
+{% endblock content %}
