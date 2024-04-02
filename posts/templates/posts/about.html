@@ -1,4 +1,190 @@
 {% extends 'posts/base.html' %}
+
 {% block content %}
-    <h1>Team Behind This Project</h1>
+    <style>
+        .centered {
+            text-align: center;
+            color: purple;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .rectangle-container {
+            perspective: 1000px; /* Perspective for 3D effect */
+            margin: 0 20px; /* Adjust margin between rectangles */
+            width: 300px; /* Adjust width as needed */
+        }
+
+        .rectangle {
+            width: 300px; /* Occupy full width of container */
+            height: 400px; /* Adjust height as needed */
+            background-color: lavender; /* Light purple color */
+            margin-bottom: 10px; /* Adjust margin between rectangles */
+            transform-style: preserve-3d; /* Preserve 3D transformation */
+            transition: transform 0.5s; /* Smooth transition for flip effect */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            position: relative; /* Position for absolute child */
+            border-radius: 20px; /* Rounded corners */
+        }
+
+        .rectangle.flipped {
+            transform: rotateY(180deg); /* Rotate the rectangle */
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Hide the backface of the element */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back {
+            transform: rotateY(180deg); /* Initially hide the back */
+            text-align: center;
+            word-wrap: break-word; /* Wrap long text */
+            font-size: 14px; /* Adjust font size */
+            padding: 20px; /* Add padding for better readability */
+        }
+
+        .line {
+            color: purple;
+            text-align: center;
+        }
+    </style>
+    
+    <div class="centered">
+        <h1>Team Behind This Project</h1>
+    </div>
+    
+    <div class="row">
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Good Job</div>
+                </div>
+            </div>
+            <div class="line">Kathryn Ringland</div>
+            <div class="line">Project Director</div>
+        </div>
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Hey!</div>
+                </div>
+            </div>
+            <div class="line">Jhertau Her</div>
+            <div class="line">Job</div>
+        </div>
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Good Job</div>
+                </div>
+            </div>
+            <div class="line">Samiyah Shaikh</div>
+            <div class="line">Developer</div>
+        </div>
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Good Job</div>
+                </div>
+            </div>
+            <div class="line">Amir Valipour</div>
+            <div class="line">UI Designer</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Good Job</div>
+                </div>
+            </div>
+            <div class="line">Edmund Xu</div>
+            <div class="line">Developer</div>
+        </div>
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Good Job</div>
+                </div>
+            </div>
+            <div class="line">Inan Xu</div>
+            <div class="line">Developer</div>
+        </div>
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Good Job</div>
+                </div>
+            </div>
+            <div class="line">Sanjana Patil</div>
+            <div class="line">Developer</div>
+        </div>
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Good Job</div>
+                </div>
+            </div>
+            <div class="line">Laiy Joshi</div>
+            <div class="line">Job</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="rectangle-container">
+            <div class="rectangle" onclick="flip(this)">
+                <div class="front">
+                    <img src="/Users/edmun/AltTextProject-1/posts/Meet the team pictures/images.jpeg" alt="Front Image">
+                </div>
+                <div class="back">
+                    <div class="line">Good Job</div>
+                </div>
+            </div>
+            <div class="line">Rushil Nagpal</div>
+            <div class="line">Job</div>
+        </div>
+    </div>
+
+    <script>
+        function flip(element) {
+            element.classList.toggle('flipped');
+        }
+    </script>
 {% endblock content %}
