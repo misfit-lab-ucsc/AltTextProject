@@ -1,14 +1,81 @@
 {% extends 'posts/base.html' %}
+
 {% block content %}
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doop</title>
-</head>
-<body>
-    <p>Yes</p>
-</body>
-</html>
-
+    <style>
+        .centered {
+            text-align: center;
+        }
+        h1 {
+            color: purple;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .subsections {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; /* Allow wrapping to move boxes to next line */
+            margin-top: 10px;
+            margin-bottom: 20px; /* Add margin below subsections */
+        }
+        .subsections .subsection {
+            background-color: #f0f0f0;
+            padding: 20px 30px;
+            border-radius: 30px;
+            border: 2px solid purple;
+            font-size: 20px;
+            margin-bottom: 20px; /* Add margin below subsections */
+            flex-basis: calc(33.33% - 20px); /* Adjust width of subsections */
+        }
+        .subsections .subsection ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px; /* Add margin between subsections and bullet points */
+        }
+        .subsections .subsection ul li {
+            margin-bottom: 10px; /* Add margin between bullet points */
+            display: flex; /* Align bullet points and text together */
+        }
+        .subsections .subsection ul li:before {
+            content: "\2022"; /* Unicode character for bullet point */
+            color: purple;
+            font-weight: bold;
+            margin-right: 5px; /* Add space between bullet point and text */
+        }
+    </style>
+    
+    <div class="centered">
+        <h1>Help Center</h1>
+        <div class="subsections">
+            <div class="subsection">
+                Alt Text
+                <ul>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                Tagging
+                <ul>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                Pictures
+                <ul>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                    <li>Point 1</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
