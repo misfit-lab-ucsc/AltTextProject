@@ -21,7 +21,7 @@
             display: block;
             margin-bottom: -10px;
             font-size: 24px; /* Adjust the font size */
-            color: purple; /* Set the color to purple */
+            color: rgb(122,0,204); /* Set the color to purple */
             font-weight: bold; /* Make the font bold */
         }
 
@@ -36,8 +36,14 @@
             border-radius: 50px; /* Add curved edges */
             font-size: 16px; /* Adjust font size */
             border-width: 10px; /* border width*/
-            color: purple; /* Set border color to purple */ 
-            background-color: #890bff; /* Set search bar color to purple */ 
+            color: rgb(122,0,204); /* Set border color to purple */ 
+            background-color: rgb(247,235,255); /* Set search bar color to purple */ 
+        }
+        /* Placeholder color */
+        .section input[type="text"]::placeholder,
+        .section textarea::placeholder,
+        .section input[type="file"]::placeholder {
+            color: rgb(214,153,255); /* Set placeholder text color */
         }
         /* Style for the input elements */
         #title {
@@ -60,14 +66,14 @@
             border-radius: 50px; /* Add curved edges */ /*DO NOT CHANGE*/
             font-size: 16px; /* Adjust font size */
             border-width: 10px; /* border width*/
-            color: purple; /*color*/
+            color: rgb(122,0,204); /*color*/
             height: 500px; /* Set the height for the alttext input */
             text-decoration: underline; /* Add underline */
             text-align: center; /* Center horizontally */
             padding: 200px 0; /* Center vertically */
             cursor: pointer; /* Add cursor pointer */
             pointer-events: none; /* Disable mouse events on the label */
-            background-color: #890bff; /* Set upload color to purple */ 
+            background-color: rgb(247,235,255); /* Set upload color to purple */ 
         }
 
         /* Non-clickable text style */
@@ -75,7 +81,7 @@
             display: inline-block; /* Make text inline */
             margin-left: 10px; /* Add left margin */
             font-size: 24px; /* Adjust the font size */
-            color: purple; /* Set the color to purple */
+            color: rgb(122,0,204); /* Set the color to purple */
             font-weight: bold; /* Make the font bold */
             cursor: pointer;
             pointer-events: none; /* Disable mouse events */
@@ -84,7 +90,7 @@
             display: inline; /* Make text inline */
             margin-left: 10px; /* Add left margin */
             font-size: 24px; /* Adjust the font size */
-            color: purple; /* Set the color to purple */
+            color: rgb(122,0,204); /* Set the color to purple */
             font-weight: bold; /* Make the font bold */
             cursor: pointer;
             pointer-events: none; /* Disable mouse events */
@@ -108,7 +114,7 @@
         }
 
         .need-help {
-            color: purple; /* Set the color of the text */
+            color: rgb(122,0,204);; /* Set the color of the text */
             font-size: 24px; /* Adjust the font size */
             text-decoration: underline; /* Add underline */
         }
@@ -117,8 +123,8 @@
             padding: 8px 16px; /* Add padding */
             border: none; /* Remove border */
             border-radius: 50px; /* Add border radius */
-            background-color: purple; /* Set background color */
-            color: white; /* Set text color */
+            background-color: rgb(122,0,204); /* Set background color */
+            color: rgb(247,235,255); /* Set text color */
             cursor: pointer; /* Add cursor pointer */
             margin-left: 100px;
             font-size: 24px; /* Adjust the font size */
@@ -173,17 +179,17 @@
         </div>
         <div class="section">
             <label for="tags">Tags (Separate tags by using a comma):</label><br>
-            <input type="text" id="tags" name="tags" placeholder="Tag1, Tag2, Tag3">
+            <input type="text" id="tags" name="tags"  placeholder="Tag1, Tag2, Tag3">
         </div>
         <div class="section">
             <label for="altText">Alt Text:</label><br>
-            <textarea id="altText" name="altText" placeholder="ALT Text goes here"></textarea>
+            <textarea id="altText" name="altText"  placeholder="ALT Text goes here"></textarea>
         </div>
         <div class="section">
             <div class="custom-file-input">
                 <input type="file" id="upload" name="upload" class="input-file" style="display: none;">
                 <label for="upload" class="file-label">
-                    <span id="choose-file-text">Choose File</span>
+                    <span id="choose-file-text">Choose a file</span>
                     <span class="non-clickable-text">or drag it here.</span>
                     <br>
                     <span class="non-clickable-text">(5mb max)</span>
