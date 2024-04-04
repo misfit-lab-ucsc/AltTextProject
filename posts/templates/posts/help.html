@@ -61,6 +61,16 @@
             color: rgb(37,0,61);
         }
 
+        .bullet-points ul li a {
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit text color */
+            display: inline-block; /* Ensure proper layout */
+        }
+
+        .bullet-points ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
         .bullet-points ul li:before {
             content: "\2022"; /* Unicode character for bullet point */
             color: rgb(37,0,61); /* Set color to purple */
@@ -73,7 +83,7 @@
     </style>
 
     <div class="centered">
-        <a href="https://www.youtube.com/watch?v=N9bKBAA22Go"> 
+        <a href="/static/help_answers/whatisalttext.html"> 
             <img src="/static/Symbols/exitsymbol.jpg" alt="Exit Door" class="exit-symbol">
         </a>
         <h1>Help Center</h1>
@@ -93,25 +103,26 @@
 
     <div class="bullet-points">
         <ul>
-            <li>What is Alt Text?</li>
-            <li>How to ALT Text?</li>
-            <li>Best Practices for ALT Text?</li>
-            <li>Examples of ALT Text?</li>
-            <li>Further reading on ALT Text?</li>
+            <li><a href="https://example.com/alt_text_info">What is Alt Text?</a></li>
+            <li><a href="https://example.com/how_to_alt_text">How to ALT Text?</a></li>
+            <li><a href="https://example.com/best_practices_alt_text">Best Practices for ALT Text?</a></li>
+            <li><a href="https://example.com/examples_alt_text">Examples of ALT Text?</a></li>
+            <li><a href="https://example.com/further_reading_alt_text">Further reading on ALT Text?</a></li>
         </ul>
         <ul>
-            <li>What is Tagging?</li>
-            <li>How to Tag?</li>
-            <li>Best Practices for Tagging?</li>
-            <li>Examples of Tagging?</li>
-            <li>Further reading on Tagging?</li>
+            <li><a href="https://example.com/tagging_info">What is Tagging?</a></li>
+            <li><a href="https://example.com/how_to_tag">How to Tag?</a></li>
+            <li><a href="https://example.com/best_practices_tagging">Best Practices for Tagging?</a></li>
+            <li><a href="https://example.com/examples_tagging">Examples of Tagging?</a></li>
+            <li><a href="https://example.com/further_reading_tagging">Further reading on Tagging?</a></li>
         </ul>
         <ul>
-            <li>What pictures are allowed on the archive?</li>
-            <li>What pictures are not allowed on the archive?</li>
-            <li>How to upload pictures?</li>
-            <li>How to rate pictures?</li>
+            <li><a href="https://example.com/allowed_pictures_info">What pictures are allowed on the archive?</a></li>
+            <li><a href="https://example.com/not_allowed_pictures_info">What pictures are not allowed on the archive?</a></li>
+            <li><a href="https://example.com/upload_pictures_info">How to upload pictures?</a></li>
+            <li><a href="https://example.com/rate_pictures_info">How to rate pictures?</a></li>
         </ul>
     </div>
 
-{% endblock content %} 
+{% endblock content %}
+
