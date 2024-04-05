@@ -1,24 +1,74 @@
-name: EB Deploy Site to AWS
+name: EB Deploy Site to AWS Prod
+
 on:
   push:
-    branches: []
+    branches:
+      - main
+      
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
     steps:
       - uses: actions/checkout@v2
+      
       - name: Install Python 3.9
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+          
       - name: Install EB CLI using pip
         run: |
           python -m pip install --upgrade pip
           pip install awsebcli
-      - name: Deploy to Elastic Beanstalk
+        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          audience: sts.amazonaws.com
+          aws-region: us-west-1
+          role-to-assume: arn:aws:iam::035263815671:role/git-deploy-workflow
+          output-credentials: true
+      
+      #- name: Generate deployment package
+      #  run: zip -r deploy.zip . -x '*.git*'
+        
+      #- name: Install eb-cli
+        #uses: einaregilsson/beanstalk-deploy@v21
+        #env:
+        #    aws_access_key: ${{ steps.aws_creds.outputs.aws-access-key-id }}
+        #    aws_secret_key: ${{ steps.aws_creds.outputs.aws-secret-access-key }}
+        #    aws_session_token : ${{ steps.aws_creds.outputs.aws-session-token }}
+
+      #- name: Add profile credentials to ~/.aws/
+      #  env:
+      #      aws_access_key_id: ${{ steps.creds.outputs.aws-access-key-id }}
+      #      aws_secret_access_key: ${{ steps.creds.outputs.aws-secret-access-key }}
+      #      aws_session_token: ${{ steps.creds.outputs.aws-session-token }}
+      #  run: |
+      #    pip install boto3
+      #    aws configure set aws_access_key_id ${{ secrets.aws_access_key_id }} --profile default
+      #    aws configure set aws_secret_access_key ${{ secrets.aws_secret_access_key }} --profile default
+      #    aws configure set aws_session_token ${{ secrets.aws_session_token }} --profile default
+      #    aws configure set region us-west-1 --profile default
+        
+      - name: Add profile
+      
         run: |
-          eb deploy
+          mkdir -p ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id = ${{ steps.creds.outputs.aws-access-key-id }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key = ${{ steps.creds.outputs.aws-secret-access-key }}" >> ~/.aws/credentials 
+          echo "aws_session_token = ${{ steps.creds.outputs.aws-session-token }}" >> ~/.aws/credentials
+          echo "region = us-west-1" >> ~/.aws/credentials
+
+      #- name: Print aws profile names
+      #  run: |
+      #    awk -F '[][]' '/^\[/{print $2}' ~/.aws/credentials
+      - run: 'cat ~/.aws/credentials'
+      #- run: 'eb init'
+      - name: Deploy
+        run: 'eb deploy alttext-env'
