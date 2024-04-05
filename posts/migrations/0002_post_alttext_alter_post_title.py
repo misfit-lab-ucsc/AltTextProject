@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='altText',
-            field=models.TextField(default='Some String', max_length=20),
+            field=models.TextField(default='missing alt text', max_length=20),
         ),
         migrations.AlterField(
             model_name='post',
