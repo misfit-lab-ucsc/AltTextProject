@@ -37,15 +37,15 @@ jobs:
       #  run: |
       #    aws sts get-session-token
       
-      #- name: Generate deployment package
-      #  run: zip -r deploy.zip . -x '*.git*'
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
         
       #- name: Install eb-cli
         #uses: einaregilsson/beanstalk-deploy@v21
         #env:
-        #    aws_access_key: ${{ steps.aws_creds.outputs.aws-access-key-id }}
-        #    aws_secret_key: ${{ steps.aws_creds.outputs.aws-secret-access-key }}
-        #    aws_session_token : ${{ steps.aws_creds.outputs.aws-session-token }}
+        #    aws_access_key: ${{ steps.creds.outputs.aws-access-key-id }}
+        #    aws_secret_key: ${{ steps.creds.outputs.aws-secret-access-key }}
+        #    aws_session_token : ${{ steps.creds.outputs.aws-session-token }}
 
       #- name: Add profile credentials to ~/.aws/
       #  env:
@@ -72,14 +72,23 @@ jobs:
       #    echo "aws_session_token = ${{ secrets.aws_session_token }}" >> ~/.aws/credentials
       #    echo "region = us-west-1" >> ~/.aws/credentials
 
-      #- name: Print aws profile names
-      #  run: |
-      #    awk -F '[][]' '/^\[/{print $2}' ~/.aws/credentials
-      #- run: 'cat ~/.aws/credentials'
+      - run: 'cat ~/.aws/credentials'
       #- run: 'eb init'
-      - name: Deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ steps.creds.outputs.aws-access-key-id }}
-          AWS_SECRET_ACCESS_KEY: ${{ steps.creds.outputs.aws-secret-access-key }}
-          AWS_DEFAULT_REGION: 'us-west-1'
-        run: 'eb deploy alttext-env'
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ steps.creds.outputs.aws-access-key-id }}
+          aws_secret_key: ${{ steps.creds.outputs.aws-secret-access-key }}
+          application_name: alttextproject
+          environment_name: alttext-env
+          version_label: 12345
+          region: us-west-1
+          deployment_package: deploy.zip
+      
+      #- name: Deploy with CLI
+      #  env:
+      #    AWS_ACCESS_KEY_ID: ${{ steps.creds.outputs.aws-access-key-id }}
+      #    AWS_SECRET_ACCESS_KEY: ${{ steps.creds.outputs.aws-secret-access-key }}
+      #    AWS_DEFAULT_REGION: 'us-west-1'
+      #  run: 'eb deploy alttext-env'
