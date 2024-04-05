@@ -32,6 +32,10 @@ jobs:
           aws-region: us-west-1
           role-to-assume: arn:aws:iam::035263815671:role/git-deploy-workflow
           output-credentials: true
+
+      - name: get caller identity 1
+        run: |
+          aws sts get-caller-identity
       
       #- name: Generate deployment package
       #  run: zip -r deploy.zip . -x '*.git*'
@@ -55,18 +59,18 @@ jobs:
       #    aws configure set aws_session_token ${{ secrets.aws_session_token }} --profile default
       #    aws configure set region us-west-1 --profile default
         
-      #- name: Add profile
-      #  env:
-      #    aws_access_key_id: ${{ steps.creds.outputs.aws-access-key-id }}
-      #    aws_secret_access_key: ${{ steps.creds.outputs.aws-secret-access-key }}
-      #    aws_session_token: ${{ steps.creds.outputs.aws-session-token }}
-      #  run: |
-      #    mkdir -p ~/.aws
-      #    echo "[default]" > ~/.aws/credentials
-      #    echo "aws_access_key_id = ${{ secrets.aws_access_key_id }}" >> ~/.aws/credentials
-      #    echo "aws_secret_access_key = ${{ secrets.aws_secret_access_key }}" >> ~/.aws/credentials 
-      #    echo "aws_session_token = ${{ secrets.aws_session_token }}" >> ~/.aws/credentials
-      #    echo "region = us-west-1" >> ~/.aws/credentials
+      - name: Add profile
+        env:
+          aws_access_key_id: ${{ steps.creds.outputs.aws-access-key-id }}
+          aws_secret_access_key: ${{ steps.creds.outputs.aws-secret-access-key }}
+          aws_session_token: ${{ steps.creds.outputs.aws-session-token }}
+        run: |
+          mkdir -p ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id = ${{ secrets.aws_access_key_id }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key = ${{ secrets.aws_secret_access_key }}" >> ~/.aws/credentials 
+          echo "aws_session_token = ${{ secrets.aws_session_token }}" >> ~/.aws/credentials
+          echo "region = us-west-1" >> ~/.aws/credentials
 
       #- name: Print aws profile names
       #  run: |
