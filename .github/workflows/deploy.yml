@@ -15,10 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Install Python 3.9
+      - name: Install Python 3.11
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: 3.11
           
       - name: Install EB CLI using pip
         run: |
@@ -95,4 +95,4 @@ jobs:
         #  AWS_ACCESS_KEY_ID: ${{ steps.creds.outputs.aws-access-key-id }}
         #  AWS_SECRET_ACCESS_KEY: ${{ steps.creds.outputs.aws-secret-access-key }}
         #  AWS_DEFAULT_REGION: 'us-west-1'
-        run: 'eb deploy alttext-env'
+        run: 'eb deploy alttext-env5'

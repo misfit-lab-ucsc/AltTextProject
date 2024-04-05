@@ -1,6 +1,6 @@
 branch-defaults:
   main:
-    environment: null
+    environment: alttext-env2
     group_suffix: null
 environment-defaults:
   alttext-django-env:
