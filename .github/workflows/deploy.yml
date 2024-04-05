@@ -72,7 +72,7 @@ jobs:
       #    echo "aws_session_token = ${{ secrets.aws_session_token }}" >> ~/.aws/credentials
       #    echo "region = us-west-1" >> ~/.aws/credentials
 
-      - run: 'cat ~/.aws/credentials'
+      #- run: 'cat ~/.aws/credentials'
       #- run: 'eb init'
 
       - name: Deploy to EB
