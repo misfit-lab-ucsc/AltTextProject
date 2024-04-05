@@ -81,8 +81,8 @@ jobs:
           aws_access_key_id: ${{ steps.creds.outputs.aws-access-key-id }}
           aws_secret_access_key: ${{ steps.creds.outputs.aws-secret-access-key }}
         with:
-          aws_access_key: ${{ secrets.aws_access_key_id }}
-          aws_secret_key: ${{ secrets.aws_secret_access_key }}
+          aws_access_key: ${{ env.aws_access_key_id }}
+          aws_secret_key: ${{ env.aws_secret_access_key }}
           application_name: alttextproject
           environment_name: alttext-env
           version_label: 12345
