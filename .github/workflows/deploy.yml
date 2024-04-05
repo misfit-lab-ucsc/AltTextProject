@@ -35,7 +35,7 @@ jobs:
 
       - name: get caller identity 1
         run: |
-          aws sts get-caller-identity
+          aws sts get-session-token
       
       #- name: Generate deployment package
       #  run: zip -r deploy.zip . -x '*.git*'
