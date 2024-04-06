@@ -86,6 +86,18 @@ def home(request):
 def about(request):
     return render(request,'posts/about.html',{'title' : 'About'})
 
+# upload feature
+def upload(request):
+    return render(request,'posts/upload.html',{'title' : 'Upload'})
+
+# howtoalttext page
+def howtoalttext(request):
+    return render(request,'posts/howtoalttext.html',{'title' : 'How to Alt Text'})
+
+# help page
+def help(request):
+    return render(request,'posts/help.html',{'title' : 'Help'})
+
 # search view we are going to do it based on alt text or title of post for now TBD / early stage
 def search(request):
     # Check if request method is GET

@@ -1,0 +1,206 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+<head>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .content-wrapper {
+            text-align: center;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .section label {
+            display: block;
+            margin-bottom: -10px;
+            font-size: 24px; /* Adjust the font size */
+            color: rgb(122,0,204); /* Set the color to purple */
+            font-weight: bold; /* Make the font bold */
+        }
+
+        /* Style for the input elements */
+        .section input[type="text"],
+        .section textarea,
+        .section input[type="file"] {
+            width: 150%; /* Set the width to 100% */
+            padding: 10px; /* Add padding */
+            box-sizing: border-box;
+            border: solid; /* Set border color */
+            border-radius: 50px; /* Add curved edges */
+            font-size: 16px; /* Adjust font size */
+            border-width: 10px; /* border width*/
+            color: rgb(122,0,204); /* Set border color to purple */ 
+            background-color: rgb(247,235,255); /* Set search bar color to purple */ 
+        }
+        /* Placeholder color */
+        .section input[type="text"]::placeholder,
+        .section textarea::placeholder,
+        .section input[type="file"]::placeholder {
+            color: rgb(214,153,255); /* Set placeholder text color */
+        }
+        /* Style for the input elements */
+        #title {
+            height: 70px; /* Set the height for the title input */
+        }
+
+        #tags {
+            height: 150px; /* Set the height for the tags input */
+        }
+
+        #altText {
+            height: 150px; /* Set the height for the alttext input */
+        }
+        /* For upload file */
+        .file-label {
+            width: 150%; /* Set the width to 100% */
+            padding: 10px; /* Add padding */
+            box-sizing: border-box;
+            border: dashed; /* Set border color */
+            border-radius: 50px; /* Add curved edges */ /*DO NOT CHANGE*/
+            font-size: 16px; /* Adjust font size */
+            border-width: 10px; /* border width*/
+            color: rgb(122,0,204); /*color*/
+            height: 500px; /* Set the height for the alttext input */
+            text-decoration: underline; /* Add underline */
+            text-align: center; /* Center horizontally */
+            padding: 200px 0; /* Center vertically */
+            cursor: pointer; /* Add cursor pointer */
+            pointer-events: none; /* Disable mouse events on the label */
+            background-color: rgb(247,235,255); /* Set upload color to purple */ 
+        }
+
+        /* Non-clickable text style */
+        .non-clickable-text {
+            display: inline-block; /* Make text inline */
+            margin-left: 10px; /* Add left margin */
+            font-size: 24px; /* Adjust the font size */
+            color: rgb(122,0,204); /* Set the color to purple */
+            font-weight: bold; /* Make the font bold */
+            cursor: pointer;
+            pointer-events: none; /* Disable mouse events */
+        }
+        .non-clickable-text-two {
+            display: inline; /* Make text inline */
+            margin-left: 10px; /* Add left margin */
+            font-size: 24px; /* Adjust the font size */
+            color: rgb(122,0,204); /* Set the color to purple */
+            font-weight: bold; /* Make the font bold */
+            cursor: pointer;
+            pointer-events: none; /* Disable mouse events */
+        }
+        /* Enable mouse events for the text within the label */
+        .file-label span {
+            pointer-events: auto;
+        }
+
+        /* Dragover style */
+        .dragover {
+            background-color: lightgray;
+        }
+
+        .additional-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px; /* Adjust as needed */
+            width: 150%; /* Ensure full width */
+        }
+
+        .need-help {
+            color: rgb(122,0,204);; /* Set the color of the text */
+            font-size: 24px; /* Adjust the font size */
+            text-decoration: underline; /* Add underline */
+        }
+
+        .upload-button {
+            padding: 8px 16px; /* Add padding */
+            border: none; /* Remove border */
+            border-radius: 50px; /* Add border radius */
+            background-color: rgb(122,0,204); /* Set background color */
+            color: rgb(247,235,255); /* Set text color */
+            cursor: pointer; /* Add cursor pointer */
+            margin-left: 100px;
+            font-size: 24px; /* Adjust the font size */
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Drag and drop functionality
+            const fileInput = document.getElementById('upload');
+            const fileLabel = document.querySelector('.file-label');
+            
+            fileLabel.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                fileLabel.classList.add('dragover');
+            });
+
+            fileLabel.addEventListener('dragleave', function() {
+                fileLabel.classList.remove('dragover');
+            });
+
+            fileLabel.addEventListener('drop', function(e) {
+                e.preventDefault();
+                fileLabel.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                const dropPositionX = e.clientX;
+                const dropPositionY = e.clientY;
+                const fileLabelRect = fileLabel.getBoundingClientRect();
+
+                if (dropPositionX >= fileLabelRect.left && dropPositionX <= fileLabelRect.right &&
+                    dropPositionY >= fileLabelRect.top && dropPositionY <= fileLabelRect.bottom) {
+                    if (files.length > 0) {
+                        fileInput.files = files;
+                        //add additional code here to handle the uploaded files
+                    }
+                }
+            });
+
+            // File input change event
+            fileInput.addEventListener('change', function() {
+                const fileNameContainer = document.getElementById('file-name');
+                const fileName = this.files[0].name;
+                fileNameContainer.textContent = fileName;
+            });
+        });
+    </script>
+</head>
+<div class="container">
+    <div class="content-wrapper">
+        <div class="section">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" placeholder="Some title...">
+        </div>
+        <div class="section">
+            <label for="tags">Tags (Separate tags by using a comma):</label><br>
+            <input type="text" id="tags" name="tags"  placeholder="Tag1, Tag2, Tag3">
+        </div>
+        <div class="section">
+            <label for="altText">Alt Text:</label><br>
+            <textarea id="altText" name="altText"  placeholder="ALT Text goes here"></textarea>
+        </div>
+        <div class="section">
+            <div class="custom-file-input">
+                <input type="file" id="upload" name="upload" class="input-file" style="display: none;">
+                <label for="upload" class="file-label">
+                    <span id="choose-file-text">Choose a file</span>
+                    <span class="non-clickable-text">or drag it here.</span>
+                    <br>
+                    <span class="non-clickable-text">(5mb max)</span>
+                </label>
+            </div>
+            <span id="file-name"></span>
+            <div class="additional-controls">
+                <span class="need-help">Need Help?</span>
+                <button class="upload-button">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

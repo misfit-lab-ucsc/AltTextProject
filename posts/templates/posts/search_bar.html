@@ -1,22 +1,65 @@
 
+<style>
+  .purple-outline {
+      border: 5px solid;
+      border-radius:100px;
+      overflow: hidden;
+      color:rgb(122,0,204)
+  }
+
+  .purple-background {
+      background-color: rgb(224,176,255);
+      border: none;
+      border-radius: 20px 0 0 20px;
+      color: white; /* Set text color to white for better visibility on purple background */
+  }
+
+  .purple-background::placeholder {
+      color: rgb(214,153,255); /* Set the color of the placeholder text to white */
+  }
+
+  .purple-background:focus {
+      outline: none; /* Remove the default focus outline */
+      background-color: rgb(224,176,255); /* Set the background color on focus */
+  }
+
+  .purple-outline .btn {
+      border: none;
+      border-radius: 0 18px 18px 0;
+  }
+</style>
+
+
+
+
 <!-- search bar -->
 <div class="container">
-    <div class="row justify-content-center">
+  <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="mx-auto my-4" style="max-width: 600px;">
-          <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
-            {% csrf_token %}
-            <!-- {{ form.as_p }} -->
-            <div class="input-group">
-              <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search for..." aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+          <div class="mx-auto my-4" style="max-width: 600px;">
+              <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+                  {% csrf_token %}
+                  <div class="input-group purple-outline">
+                      <input class="form-control mr-sm-2 purple-background" type="search" name="query" placeholder="Search for..." aria-label="Search">
+                      <div class="input-group-append">
+                          <button class="btn btn-outline-success my-2 my-sm-0 purple-background" type="submit">
+                              <i class="fas fa-search" style="color: rgb(122,0,204);"></i>
+                          </button>
+                      </div>
+                  </div>
+              </form>
+          </div>
       </div>
-    </div>
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

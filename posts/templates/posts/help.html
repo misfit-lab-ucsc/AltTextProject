@@ -1,0 +1,128 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+    <style>
+        .centered {
+            text-align: center;
+            display: flex; /* Added to align items horizontally */
+            align-items: center; /* Vertically center items */
+            margin-top: 100px;
+        }
+        h1 {
+            color: rgb(37,0,61);
+            padding: 20px;
+            margin-bottom: 60px;
+            margin-left: 560px;
+            font-weight: bold;
+        }
+        .exit-symbol {
+            width: 100px; /* Adjust width of the exit symbol image */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 10px; /* Add space between the symbol and the h1 text */
+            margin-left: 50px;
+            margin-top: -100px; 
+        }
+        .subsections {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+            color: rgb(37,0,61);
+            font-weight: bold;
+        }
+        .subsections .subsection {
+            background-color: rgb(214,153,255);
+            padding: 10px 150px; /* Adjusted padding */
+            border-radius: 30px;
+            border: 4px solid rgb(122,0,204);;
+            font-size: 40px;
+            margin-left: 30px;
+            margin-bottom: 20px; /* Add margin below subsections */
+        }
+        .subsections .subsection ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .bullet-points {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Allow wrapping to create multiple rows */
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .bullet-points ul {
+            width: calc(33.33% - 20px);
+            margin-bottom: 30px; /* Add margin below each column */
+        }
+        .bullet-points ul li {
+            margin-bottom: 50px;
+            display: flex; /* Align bullet points and text together */
+            align-items: flex-start; /* Align items at the start of the flex container */
+            line-height: 1.5; /* Adjust line height for better vertical alignment */
+            color: rgb(37,0,61);
+        }
+
+        .bullet-points ul li a {
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit text color */
+            display: inline-block; /* Ensure proper layout */
+        }
+
+        .bullet-points ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .bullet-points ul li:before {
+            content: "\2022"; /* Unicode character for bullet point */
+            color: rgb(37,0,61); /* Set color to purple */
+            font-weight: bold;
+            margin-right: 5px; /* Add space between bullet point and text */
+            margin-left: 50px;
+            font-size: 24px; /* Larger font for bullet points */
+            vertical-align: middle; /* Align bullet point vertically */
+        }
+    </style>
+
+    <div class="centered">
+        <a href="/static/help_answers/whatisalttext.html"> 
+            <img src="/static/Symbols/exitsymbol.jpg" alt="Exit Door" class="exit-symbol">
+        </a>
+        <h1>Help Center</h1>
+    </div>
+
+    <div class="subsections">
+        <div class="subsection">
+            Alt Text
+        </div>
+        <div class="subsection">
+            Tagging
+        </div>
+        <div class="subsection">
+            Pictures
+        </div>
+    </div>
+
+    <div class="bullet-points">
+        <ul>
+            <li><a href="https://example.com/alt_text_info">What is Alt Text?</a></li>
+            <li><a href="https://example.com/how_to_alt_text">How to ALT Text?</a></li>
+            <li><a href="https://example.com/best_practices_alt_text">Best Practices for ALT Text?</a></li>
+            <li><a href="https://example.com/examples_alt_text">Examples of ALT Text?</a></li>
+            <li><a href="https://example.com/further_reading_alt_text">Further reading on ALT Text?</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://example.com/tagging_info">What is Tagging?</a></li>
+            <li><a href="https://example.com/how_to_tag">How to Tag?</a></li>
+            <li><a href="https://example.com/best_practices_tagging">Best Practices for Tagging?</a></li>
+            <li><a href="https://example.com/examples_tagging">Examples of Tagging?</a></li>
+            <li><a href="https://example.com/further_reading_tagging">Further reading on Tagging?</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://example.com/allowed_pictures_info">What pictures are allowed on the archive?</a></li>
+            <li><a href="https://example.com/not_allowed_pictures_info">What pictures are not allowed on the archive?</a></li>
+            <li><a href="https://example.com/upload_pictures_info">How to upload pictures?</a></li>
+            <li><a href="https://example.com/rate_pictures_info">How to rate pictures?</a></li>
+        </ul>
+    </div>
+
+{% endblock content %}
+

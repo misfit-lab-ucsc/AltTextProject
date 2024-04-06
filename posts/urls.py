@@ -23,5 +23,11 @@ urlpatterns = [
     path('post/',PostListView.as_view(),name='post-list'),
     # search posts view
     path('search/',views.search,name='search'),
+    # upload page
+    path('upload/',views.upload,name='posts-upload'),
+    # How To ALT Text page
+    path('howtoalttext/',views.howtoalttext,name='posts-howtoalttext'),
+    # Help
+    path('help/',views.help,name='posts-help'),
 
 ]
