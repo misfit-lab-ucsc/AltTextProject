@@ -25,6 +25,8 @@ class Post(models.Model):
     # add param check date was updated
     last_updated_by = models.ForeignKey(User, on_delete=models.SET_NULL,related_name='last_updated_posts',null = True,blank = True)
 
+    approved = models.BooleanField(default=False)
+
     # need to resize our posts need to override save method as well as use PILLOW
     # documented more in sample blog app folder
     def save(self,*args,**kwargs):
