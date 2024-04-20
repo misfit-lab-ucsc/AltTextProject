@@ -3,14 +3,14 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from.models import Profile
+from.models import Profile, MyUser
 
 # when we create a user or register on our app
 class UserRegisterForm(UserCreationForm):
     # dont forget we can edit param
     email = forms.EmailField()
     class Meta:
-        model = User
+        model = MyUser
         fields = ['username','email','password1','password2']
 
     def clean_username(self):
@@ -24,6 +24,7 @@ class UserUpdateForm(forms.ModelForm):
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
         self.user = UserRegisterForm(*args,**kwargs)
+
     def clean_username(self):
         cleaned_data = self.cleaned_data
         username = cleaned_data.get('username')
@@ -35,7 +36,7 @@ class UserUpdateForm(forms.ModelForm):
 
 
     class Meta:
-        model = User
+        model = MyUser
         fields = ['username']
 
 # update profile image
