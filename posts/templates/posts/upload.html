@@ -86,14 +86,18 @@
             cursor: pointer;
             pointer-events: none; /* Disable mouse events */
         }
-        .non-clickable-text-two {
+        .fivemb {
             display: inline; /* Make text inline */
             margin-left: 10px; /* Add left margin */
-            font-size: 24px; /* Adjust the font size */
-            color: rgb(122,0,204); /* Set the color to purple */
+            font-size: 20px; /* Adjust the font size */
+            color: rgb(147,0,255); /* Set the color to purple */
             font-weight: bold; /* Make the font bold */
             cursor: pointer;
             pointer-events: none; /* Disable mouse events */
+            
+        }
+        .non-underlined {
+            text-decoration: none !important; /* Remove underline */
         }
         /* Enable mouse events for the text within the label */
         .file-label span {
@@ -114,7 +118,7 @@
         }
 
         .need-help {
-            color: rgb(122,0,204);; /* Set the color of the text */
+            color: rgb(122,0,204); /* Set the color of the text */
             font-size: 24px; /* Adjust the font size */
             text-decoration: underline; /* Add underline */
         }
@@ -130,46 +134,53 @@
             font-size: 24px; /* Adjust the font size */
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Drag and drop functionality
-            const fileInput = document.getElementById('upload');
-            const fileLabel = document.querySelector('.file-label');
-            
-            fileLabel.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                fileLabel.classList.add('dragover');
-            });
+ <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Drag and drop functionality
+        const fileInput = document.getElementById('upload');
+        const fileLabel = document.querySelector('.file-label');
+        const chooseFileText = document.getElementById('choose-file-text');
+        const dragText = document.querySelector('.non-clickable-text');
 
-            fileLabel.addEventListener('dragleave', function() {
-                fileLabel.classList.remove('dragover');
-            });
-
-            fileLabel.addEventListener('drop', function(e) {
-                e.preventDefault();
-                fileLabel.classList.remove('dragover');
-                const files = e.dataTransfer.files;
-                const dropPositionX = e.clientX;
-                const dropPositionY = e.clientY;
-                const fileLabelRect = fileLabel.getBoundingClientRect();
-
-                if (dropPositionX >= fileLabelRect.left && dropPositionX <= fileLabelRect.right &&
-                    dropPositionY >= fileLabelRect.top && dropPositionY <= fileLabelRect.bottom) {
-                    if (files.length > 0) {
-                        fileInput.files = files;
-                        //add additional code here to handle the uploaded files
-                    }
-                }
-            });
-
-            // File input change event
-            fileInput.addEventListener('change', function() {
-                const fileNameContainer = document.getElementById('file-name');
-                const fileName = this.files[0].name;
-                fileNameContainer.textContent = fileName;
-            });
+        fileLabel.addEventListener('dragover', function(e) {
+            e.preventDefault(); // Prevent default action
+            fileLabel.classList.add('dragover');
         });
-    </script>
+
+        fileLabel.addEventListener('dragleave', function() {
+            fileLabel.classList.remove('dragover');
+        });
+
+        fileLabel.addEventListener('drop', function(e) {
+            e.preventDefault(); // Prevent default action
+            fileLabel.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            const dropPositionX = e.clientX;
+            const dropPositionY = e.clientY;
+            const fileLabelRect = fileLabel.getBoundingClientRect();
+
+            if (dropPositionX >= fileLabelRect.left && dropPositionX <= fileLabelRect.right &&
+                dropPositionY >= fileLabelRect.top && dropPositionY <= fileLabelRect.bottom) {
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    updateFileName(files[0].name);
+                }
+            }
+        });
+
+        // File input change event
+        fileInput.addEventListener('change', function() {
+            const fileName = this.files[0].name;
+            updateFileName(fileName);
+        });
+
+        function updateFileName(fileName) {
+            chooseFileText.textContent = fileName;
+            dragText.style.display = 'none'; // Hide the drag text
+        }
+    });
+</script>
+
 </head>
 <div class="container">
     <div class="content-wrapper">
@@ -192,7 +203,7 @@
                     <span id="choose-file-text">Choose a file</span>
                     <span class="non-clickable-text">or drag it here.</span>
                     <br>
-                    <span class="non-clickable-text">(5mb max)</span>
+                    <span style="text-decoration:none" class="fivemb">(5mb max)</span>
                 </label>
             </div>
             <span id="file-name"></span>
