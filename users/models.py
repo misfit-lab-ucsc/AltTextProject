@@ -3,9 +3,23 @@ from django.contrib.auth.models import User
 from PIL import Image
 
 # Create your models here.
+class PermissionLevel(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.TextField(blank = True)
+
+class MyUser(User):
+
+    permission_level = models.ForeignKey(PermissionLevel, on_delete=models.CASCADE)
+    
+    def save(self, *args, **kwargs):
+        if not self.pk: 
+            default_permission_level = PermissionLevel.objects.get(name='Base')
+            self.permission_level = default_permission_level
+        super().save(*args, **kwargs)
+
 
 class Profile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(MyUser,on_delete=models.CASCADE)
     image = models.ImageField(default='default_profile_pic.jpg',upload_to='profile_pics')
     desc = models.TextField(max_length=150, default='')
 
