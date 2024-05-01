@@ -33,9 +33,9 @@
             padding: 10px; /* Add padding */
             box-sizing: border-box;
             border: solid; /* Set border color */
-            border-radius: 50px; /* Add curved edges */
+            border-radius: 40px; /* Add curved edges */
             font-size: 16px; /* Adjust font size */
-            border-width: 10px; /* border width*/
+            border-width: 5px; /* border width*/
             color: rgb(122,0,204); /* Set border color to purple */ 
             background-color: rgb(247,235,255); /* Set search bar color to purple */ 
         }
@@ -63,14 +63,14 @@
             padding: 10px; /* Add padding */
             box-sizing: border-box;
             border: dashed; /* Set border color */
-            border-radius: 50px; /* Add curved edges */ /*DO NOT CHANGE*/
+            border-radius: 40px; /* Add curved edges */ /*DO NOT CHANGE*/
             font-size: 16px; /* Adjust font size */
-            border-width: 10px; /* border width*/
+            border-width: 5px; /* border width*/
             color: rgb(122,0,204); /*color*/
             height: 500px; /* Set the height for the alttext input */
             text-decoration: underline; /* Add underline */
             text-align: center; /* Center horizontally */
-            padding: 200px 0; /* Center vertically */
+            padding: 300px 0; /* Center vertically */
             cursor: pointer; /* Add cursor pointer */
             pointer-events: none; /* Disable mouse events on the label */
             background-color: rgb(247,235,255); /* Set upload color to purple */ 
@@ -87,7 +87,7 @@
             pointer-events: none; /* Disable mouse events */
         }
         .fivemb {
-            display: inline; /* Make text inline */
+            display: inline-block; /* Make text inline */
             margin-left: 10px; /* Add left margin */
             font-size: 20px; /* Adjust the font size */
             color: rgb(147,0,255); /* Set the color to purple */
@@ -101,9 +101,12 @@
         }
         /* Enable mouse events for the text within the label */
         .file-label span {
+            pointer-events: none;
+        }
+        /* Enable pointer events only for the "Choose a file" text */
+        .file-label #choose-file-text {
             pointer-events: auto;
         }
-
         /* Dragover style */
         .dragover {
             background-color: lightgray;
@@ -121,17 +124,19 @@
             color: rgb(122,0,204); /* Set the color of the text */
             font-size: 24px; /* Adjust the font size */
             text-decoration: underline; /* Add underline */
+            margin-bottom: 100px; 
         }
 
         .upload-button {
             padding: 8px 16px; /* Add padding */
             border: none; /* Remove border */
-            border-radius: 50px; /* Add border radius */
+            border-radius: 40px; /* Add border radius */
             background-color: rgb(122,0,204); /* Set background color */
             color: rgb(247,235,255); /* Set text color */
             cursor: pointer; /* Add cursor pointer */
             margin-left: 100px;
             font-size: 24px; /* Adjust the font size */
+            margin-bottom: 100px; 
         }
     </style>
  <script>
@@ -203,7 +208,7 @@
                     <span id="choose-file-text">Choose a file</span>
                     <span class="non-clickable-text">or drag it here.</span>
                     <br>
-                    <span style="text-decoration:none" class="fivemb">(5mb max)</span>
+                    <span class="fivemb">(5mb max)</span>
                 </label>
             </div>
             <span id="file-name"></span>
