@@ -1,7 +1,8 @@
 .idea
 
 # Media files
-media/
+media/post_pics
+media/profile_pics
 
 # collectstatic files
 static_deploy/
