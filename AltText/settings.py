@@ -1,5 +1,4 @@
 # Settings.py file for our AltText project Archive by Army
-# Copy and paste configuration in settings.py under AltText folder 
 
 """
 Django settings for AltText project.
@@ -89,17 +88,18 @@ WSGI_APPLICATION = 'AltText.wsgi.application'
 
 DATABASES = {
     'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'users',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    #    'ENGINE': 'django.db.backends.mysql',
+    #    'NAME': 'users',
         'USER': 'admin',
         'PASSWORD': env('AWS_RDS_PASSWORD'),
         'HOST': env('AWS_RDS_ENDPOINT'),
         'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'STRICT_TRANS_TABLES',
-        }
+    #    'OPTIONS': {
+    #        'sql_mode': 'STRICT_TRANS_TABLES',
+    #    },
+        'BACKEND': "storages.backends.s3.S3Storage"
     }
 }
 
