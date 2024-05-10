@@ -1,25 +1,23 @@
 from django.db import models
-from PIL import Image
+#from PIL import Image
 import os
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-from io import BytesIO
-from django.core.files.storage import default_storage
-
+from django_resized import ResizedImageField
 import uuid
+
 # from django.utils.text import slugify
 
 # Create your models here.
-
 
 class Post(models.Model):
     # Each post that the database will store
     # need to change max length property later
     title = models.CharField(default="",max_length=10)
     # postspics
-    photo = models.ImageField(upload_to='post_pics')
+    photo = ResizedImageField(size=[300,300], upload_to='post_pics')
     # alttext need to change max length property later
     alt_text = models.TextField(max_length=20,default='Please describe some text that accurately represents the image!')
     # add param check date was posted
@@ -44,17 +42,9 @@ class Post(models.Model):
                 self.last_updated_by = post.last_updated_by
             except Post.DoesNotExist:
                 pass
-        super().save(*args,**kwargs)
-        # TODO: fix this resizing such that uploading original is not required
-        img = Image.open(self.photo.path)
-        # we will change the numbers later
-        if img.height > 300 or img.width > 300:
-            output_size = (300,300)
-            img.thumbnail(output_size)
-            #img.save(self.photo.path)
         if request:
             self.last_updated_by = request.user
-            #super().save(*args,**kwargs)
+        super().save(*args,**kwargs)
       
     # how we display our posts in db using our title
     def __str__(self):
