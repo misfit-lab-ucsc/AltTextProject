@@ -40,8 +40,8 @@ class Post(models.Model):
                 self.last_updated_by = post.last_updated_by
             except Post.DoesNotExist:
                 pass
-        #super().save(*args,**kwargs)
-        default_storage.save(*args, **kwargs)
+        super().save(*args,**kwargs)
+        #default_storage.save(*args, **kwargs)
         img = Image.open(self.photo.path)
         # we will change the numbers later
         if img.height > 300 or img.width > 300:
