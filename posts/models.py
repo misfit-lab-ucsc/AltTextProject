@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 
 from io import BytesIO
 from django.core.files.storage import default_storage
+
+import uuid
 # from django.utils.text import slugify
 
 # Create your models here.
@@ -27,6 +29,8 @@ class Post(models.Model):
 
     # add param check date was updated
     last_updated_by = models.ForeignKey(User, on_delete=models.SET_NULL,related_name='last_updated_posts',null = True,blank = True)
+
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
     approved = models.BooleanField(default=False)
 

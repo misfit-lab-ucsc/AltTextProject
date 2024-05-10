@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -99,9 +100,10 @@ DATABASES = {
     #    'OPTIONS': {
     #        'sql_mode': 'STRICT_TRANS_TABLES',
     #    },
-        'BACKEND': "storages.backends.s3.S3Storage"
     }
 }
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 
 
 # Password validation
@@ -168,3 +170,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_SESSION_TOKEN = env('AWS_SESSION_TOKEN')
+AWS_STORAGE_BUCKET_NAME = 'alttextproject-images'
