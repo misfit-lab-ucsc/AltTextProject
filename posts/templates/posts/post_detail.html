@@ -1,7 +1,7 @@
 {% extends 'posts/base.html' %}
     {% block content %}
         <div class="alignel">
-            <h1 class="text-left"> Post Title : {{ object.title }}</h1>
+            <!--<h1 class="text-left"> Post Title : {{ object.title }}</h1>-->
             <img src="{{ object.photo.url }}" alt="{{ object.alt_text }}" class = 'postimg'>
         </div>
         <p>Posted {{ object.date_posted }}</p>
