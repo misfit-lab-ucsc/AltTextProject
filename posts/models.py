@@ -45,7 +45,7 @@ class Post(models.Model):
             except Post.DoesNotExist:
                 pass
         super().save(*args,**kwargs)
-        #default_storage.save(*args, **kwargs)
+        # TODO: fix this resizing such that uploading original is not required
         img = Image.open(self.photo.path)
         # we will change the numbers later
         if img.height > 300 or img.width > 300:
