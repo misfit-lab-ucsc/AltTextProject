@@ -143,7 +143,7 @@ def search(request):
 # POST CREATE VIEW NEED TO HANDLE DIFFERENT IMAGE TYPES WHEN SAVING AND RESIZING
 class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
-    fields = ['title','photo','alt_text']
+    fields = ['photo','alt_text']
     success_url = reverse_lazy('posts-create')
     def form_valid(self,form):
         form.instance.author = self.request.user

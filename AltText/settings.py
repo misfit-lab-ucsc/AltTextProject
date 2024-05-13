@@ -1,5 +1,4 @@
 # Settings.py file for our AltText project Archive by Army
-# Copy and paste configuration in settings.py under AltText folder 
 
 """
 Django settings for AltText project.
@@ -51,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -89,19 +89,21 @@ WSGI_APPLICATION = 'AltText.wsgi.application'
 
 DATABASES = {
     'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'users',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    #    'ENGINE': 'django.db.backends.mysql',
+    #    'NAME': 'users',
         'USER': 'admin',
         'PASSWORD': env('AWS_RDS_PASSWORD'),
         'HOST': env('AWS_RDS_ENDPOINT'),
         'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'STRICT_TRANS_TABLES',
-        }
+    #    'OPTIONS': {
+    #        'sql_mode': 'STRICT_TRANS_TABLES',
+    #    },
     }
 }
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 
 
 # Password validation
@@ -168,3 +170,10 @@ EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# AWS S3
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'alttextproject-images'
+AWS_S3_REGION_NAME = 'us-west-1'
+AWS_DEFAULT_ACL = 'public-read'
+AWS_QUERYSTRING_AUTH = False
