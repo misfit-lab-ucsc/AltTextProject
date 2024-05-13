@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'AltText.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    #    'ENGINE': 'django.db.backends.mysql',
-    #    'NAME': 'users',
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'users',
         'USER': 'admin',
         'PASSWORD': env('AWS_RDS_PASSWORD'),
         'HOST': env('AWS_RDS_ENDPOINT'),
