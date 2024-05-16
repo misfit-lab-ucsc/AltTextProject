@@ -1,0 +1,144 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid rgb(122,0,204);
+            font-weight: bold;
+            font-size: 24px;
+            color: rgb(122,0,204);
+        }
+        .left {
+            order: 1;
+        }
+        .right {
+            order: 2;
+        }
+        .sign-out {
+            padding: 5px 10px;
+            background-color: rgb(122,0,204);
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            font-weight: bold;
+            font-size: 24px;
+            color: rgb(122,0,204);
+        }
+        .profile-container {
+            flex: 0 0 30%; /* 30% width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-right: 1px solid rgb(122,0,204);
+        }
+        .story-container {
+            flex: 1; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: rgb(122,0,204); 
+            margin-bottom: 10px;
+        }
+        .story-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: rgb(122,0,204); 
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style-type: none; 
+            padding: 0; 
+            text-align: center; 
+        }
+        .options li {
+            margin-bottom: 5px;
+        }
+        .separator {
+            margin-top: 10px;
+            color: rgb(122,0,204);
+        }
+        .story-pics-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 20px; 
+        }
+        .image-columns {
+            display: flex;
+            width: 100%;
+            justify-content: space-around; 
+            margin-top: 20px;
+        }
+        .column {
+            flex: 1; 
+            padding: 50px;
+        }
+        .image-vertical, .image-horizontal {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5%;
+        }
+    </style>
+
+    <div class="header">
+        <div class="left">Profile</div>
+        <div class="right">
+            <div class="sign-out">Sign out</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-pic"></div>
+            <div>PhilMadeThis</div>
+            <div>philemail@ucsc.edu</div>
+            <ul class="options">
+                <li>Profile Settings</li>
+                <li>Contribution History</li>
+                <li>Uploads</li>
+            </ul>
+        </div>
+        <div class="story-container">
+            <div class="story-pics-container">
+                <span class="story-pic"></span>
+                <span class="story-pic"></span>
+                <span class="story-pic"></span>
+                <span class="story-pic"></span>
+            </div>
+            <div class="separator">
+                Uploads 
+                <span style="margin: 0 5px;">|</span>
+                Alt Texts
+            </div>
+            <div class="image-columns">
+                <div class="column">
+                    <img class="image-vertical" src="https://ibighit.com/bts/images/profile/proof/member/bts-m.jpg" alt="Vertical Image 1">
+                    <img class="image-vertical" src="https://www.hyundai.com/content/dam/hyundai/ww/en/images/worldcup/08-bts/worldcup-bts-stg-m.jpg" alt="Vertical Image 2">
+                </div>
+                <div class="column">
+                    <img class="image-horizontal" src="https://m.media-amazon.com/images/M/MV5BNzkxOGE0NzgtYzAwYS00NWE4LTk4Y2EtMWE4YTQ0YjVlMTdiXkEyXkFqcGdeQXVyMTU3ODQxNDYz._V1_.jpg" alt="Horizontal Image 1">
+                    <img class="image-horizontal" src="https://imageio.forbes.com/specials-images/imageserve/1207828603/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds" alt="Horizontal Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
