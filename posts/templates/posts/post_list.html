@@ -4,7 +4,7 @@
         {% for post in posts %}
             <li>
                 <h2>Posted by {{ post.author }}</h1>
-                <a href="{% url 'post-detail' pk=post.pk %}">{{ post.title }}</a>
+                <a href="{% url 'post-detail' pk=post.pk %}">{{ post.alt_text }}</a>
             </li>
         {% endfor %}
     </ul>
