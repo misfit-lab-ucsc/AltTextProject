@@ -11,6 +11,7 @@
         .content-wrapper {
             text-align: center;
             margin-right: 150px; /* Add left margin */
+            margin-top: 50px;
         }
         
         .section {
@@ -137,8 +138,37 @@
             font-size: 24px; /* Adjust the font size */
             margin-bottom: 100px; 
         }
+
+        /* Popup container styles */
+        .popup-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            z-index: 9999;
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .popup-container.visible {
+            display: block;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
     </style>
- <script>
+    <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Drag and drop functionality
         const fileInput = document.getElementById('upload');
@@ -166,25 +196,54 @@
             if (dropPositionX >= fileLabelRect.left && dropPositionX <= fileLabelRect.right &&
                 dropPositionY >= fileLabelRect.top && dropPositionY <= fileLabelRect.bottom) {
                 if (files.length > 0) {
-                    fileInput.files = files;
-                    updateFileName(files[0].name);
+                    if (validateFileType(files[0])) {
+                        fileInput.files = files;
+                        updateFileName(files[0].name);
+                    } else {
+                        showPopup();
+                    }
                 }
             }
         });    
+ 
 
         // File input change event
         fileInput.addEventListener('change', function() {
-            const fileName = this.files[0].name;
-            updateFileName(fileName);
+            const file = this.files[0];
+            if (validateFileType(file)) {
+                updateFileName(file.name);
+            } else {
+                showPopup();
+            }
         });
+
+        function validateFileType(file) {
+            const allowedExtensions = /(\.jpg|\.png)$/i;
+            return allowedExtensions.test(file.name);
+        }
 
         function updateFileName(fileName) {
             chooseFileText.textContent = fileName;
             dragText.style.display = 'none'; // Hide the drag text
         }
+
+        // Popup functions
+        function showPopup() {
+            document.getElementById('popup').classList.add('visible');
+        }
+
+        function closePopup() {
+            document.getElementById('popup').classList.remove('visible');
+        }
     });
 </script>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('closeButton').addEventListener('click', function() {
+            console.log('Button clicked!');
+        });
+    });
+</script>
 </head>
 <div class="container">
     <div class="content-wrapper">
@@ -213,5 +272,9 @@
             </div>
         </div>
     </div>
+</div>
+<div class="popup-container" id="popup">
+    <p>Failed to Import. Only .jpg and .png files are allowed.</p>
+    <button onclick="closePopup()">Close</button>
 </div>
 {% endblock content %}
