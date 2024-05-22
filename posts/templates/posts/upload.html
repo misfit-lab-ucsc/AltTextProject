@@ -139,6 +139,17 @@
             margin-bottom: 100px; 
         }
 
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            z-index: 9998; /* Ensure it's above other content */
+            display: none; /* Initially hidden */
+        }
+
         /* Popup container styles */
         .popup-container {
             position: fixed;
@@ -158,7 +169,7 @@
             text-align: center;
             width: 500px;
             color: rgb(122,0,204); /* Change to your desired font color */
-            font-size: 25px;
+            font-size: 22px;
             border-radius: 30px;
             
         }
@@ -242,26 +253,17 @@
             dragText.style.display = 'none'; // Hide the drag text
         }
 
-        // Popup functions
-        function showPopup() {
-            document.getElementById('popup').classList.add('visible');
-        }
-
-        function closePopup() {
-            document.getElementById('popup').classList.remove('visible');
-        }
-    });
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('closeButton').addEventListener('click', function() {
-            console.log('Button clicked!');
-        });
     });
 </script>
 <script>
     function closePopup() {
         document.getElementById('popup').classList.remove('visible');
+        document.getElementById('overlay').style.display = 'none'; // Hide the overlay
+    }
+
+    function showPopup() {
+        document.getElementById('popup').classList.add('visible');
+        document.getElementById('overlay').style.display = 'block'; // Show the overlay
     }
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -270,8 +272,6 @@
         });
     });
 </script>
-
-
 </head>
 <div class="container">
     <div class="content-wrapper">
@@ -301,9 +301,10 @@
         </div>
     </div>
 </div>
+<div class="overlay" id="overlay"></div>
 <div class="popup-container" id="popup">
     <p>Failed to import</p>
     <p>File format not recognized</p>
-    <button id="closeButton">OK</button>
+    <button id="closeButton">Close</button>
 </div>
 {% endblock content %}
