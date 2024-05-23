@@ -193,6 +193,9 @@
             width: 100px;
             border-radius: 10px;
         }
+        .no-scroll {
+        overflow: hidden;
+        }
     </style>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -259,11 +262,13 @@
     function closePopup() {
         document.getElementById('popup').classList.remove('visible');
         document.getElementById('overlay').style.display = 'none'; // Hide the overlay
+        document.body.classList.remove('no-scroll');
     }
 
     function showPopup() {
         document.getElementById('popup').classList.add('visible');
         document.getElementById('overlay').style.display = 'block'; // Show the overlay
+        document.body.classList.add('no-scroll');
     }
 
     document.addEventListener("DOMContentLoaded", function() {
