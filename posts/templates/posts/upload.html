@@ -198,66 +198,108 @@
         }
     </style>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Drag and drop functionality
-        const fileInput = document.getElementById('upload');
-        const fileLabel = document.querySelector('.file-label');
-        const chooseFileText = document.getElementById('choose-file-text');
-        const dragText = document.querySelector('.non-clickable-text');
-
-        fileLabel.addEventListener('dragover', function(e) {
-            e.preventDefault(); // Prevent default action
-            fileLabel.classList.add('dragover');
-        });
-
-        fileLabel.addEventListener('dragleave', function() {
-            fileLabel.classList.remove('dragover');
-        });
-
-        fileLabel.addEventListener('drop', function(e) {
-            e.preventDefault(); // Prevent default action
-            fileLabel.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            const dropPositionX = e.clientX;
-            const dropPositionY = e.clientY;
-            const fileLabelRect = fileLabel.getBoundingClientRect();
-
-            if (dropPositionX >= fileLabelRect.left && dropPositionX <= fileLabelRect.right &&
-                dropPositionY >= fileLabelRect.top && dropPositionY <= fileLabelRect.bottom) {
-                if (files.length > 0) {
-                    if (validateFileType(files[0])) {
-                        fileInput.files = files;
-                        updateFileName(files[0].name);
-                    } else {
-                        showPopup();
+        document.addEventListener("DOMContentLoaded", function() {
+            // Drag and drop functionality
+            const fileInput = document.getElementById('upload');
+            const fileLabel = document.querySelector('.file-label');
+            const chooseFileText = document.getElementById('choose-file-text');
+            const dragText = document.querySelector('.non-clickable-text');
+            const maxSizeMB = 5; // Maximum file size in MB
+    
+            fileLabel.addEventListener('dragover', function(e) {
+                e.preventDefault(); // Prevent default action
+                fileLabel.classList.add('dragover');
+            });
+    
+            fileLabel.addEventListener('dragleave', function() {
+                fileLabel.classList.remove('dragover');
+            });
+    
+            fileLabel.addEventListener('drop', function(e) {
+                e.preventDefault(); // Prevent default action
+                fileLabel.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                const dropPositionX = e.clientX;
+                const dropPositionY = e.clientY;
+                const fileLabelRect = fileLabel.getBoundingClientRect();
+    
+                if (dropPositionX >= fileLabelRect.left && dropPositionX <= fileLabelRect.right &&
+                    dropPositionY >= fileLabelRect.top && dropPositionY <= fileLabelRect.bottom) {
+                    if (files.length > 0) {
+                        const file = files[0];
+                        const isValidType = validateFileType(file);
+                        const isValidSize = validateFileSize(file);
+                        if (isValidType && isValidSize) {
+                            fileInput.files = files;
+                            updateFileName(file.name);
+                        } else {
+                            if (!isValidType && !isValidSize) {
+                                showPopup("File size exceeds " + maxSizeMB + "MB limit and file format not recognized");
+                            } else if (!isValidType) {
+                                showPopup("File format not recognized");
+                            } else {
+                                showPopup("File size exceeds " + maxSizeMB + "MB limit");
+                            }
+                        }
                     }
                 }
+            });
+    
+            // File input change event
+            fileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                const isValidType = validateFileType(file);
+                const isValidSize = validateFileSize(file);
+                if (isValidType && isValidSize) {
+                    updateFileName(file.name);
+                } else {
+                    if (!isValidType && !isValidSize) {
+                        showPopup("File size exceeds " + maxSizeMB + "MB limit and file format not recognized");
+                    } else if (!isValidType) {
+                        showPopup("File format not recognized");
+                    } else {
+                        showPopup("File size exceeds " + maxSizeMB + "MB limit");
+                    }
+                }
+            });
+    
+            function validateFileSize(file) {
+                const fileSizeMB = file.size / (1024 * 1024); // Convert bytes to MB
+                return fileSizeMB <= maxSizeMB;
             }
-        });    
- 
-
-        // File input change event
-        fileInput.addEventListener('change', function() {
-            const file = this.files[0];
-            if (validateFileType(file)) {
-                updateFileName(file.name);
-            } else {
-                showPopup();
+    
+            function validateFileType(file) {
+                const allowedExtensions = /(\.jpg|\.png)$/i;
+                return allowedExtensions.test(file.name);
             }
+    
+            function updateFileName(fileName) {
+                chooseFileText.textContent = fileName;
+                dragText.style.display = 'none'; // Hide the drag text
+            }
+    
+            function showPopup(message) {
+                const popup = document.getElementById('popup');
+                const overlay = document.getElementById('overlay');
+                const popupMessage = document.querySelector('.popup-container p:nth-child(2)');
+    
+                popupMessage.textContent = message;
+                popup.classList.add('visible');
+                overlay.style.display = 'block'; // Show the overlay
+                document.body.classList.add('no-scroll');
+            }
+    
+            function closePopup() {
+                document.getElementById('popup').classList.remove('visible');
+                document.getElementById('overlay').style.display = 'none'; // Hide the overlay
+                document.body.classList.remove('no-scroll');
+            }
+    
+            document.getElementById('closeButton').addEventListener('click', function() {
+                closePopup();
+            });
         });
-
-        function validateFileType(file) {
-            const allowedExtensions = /(\.jpg|\.png)$/i;
-            return allowedExtensions.test(file.name);
-        }
-
-        function updateFileName(fileName) {
-            chooseFileText.textContent = fileName;
-            dragText.style.display = 'none'; // Hide the drag text
-        }
-
-    });
-</script>
+    </script>      
 <script>
     function closePopup() {
         document.getElementById('popup').classList.remove('visible');
