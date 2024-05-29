@@ -15,14 +15,32 @@
         {% endif %}
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">
-                  Upload
-                  <span class="need-help"><a href="">Need Help?</a></span>
-                </legend>
-                <!--render form as paragraph tag .as_p-->
-                {{ form|crispy}}
-            </fieldset>
+            <div class="form-wrapper">
+                <fieldset class="form-group mb-3">
+                    <legend class="border-bottom mb-4">
+                    Upload
+                    <span class="need-help"><a href="">Need Help?</a></span>
+                    </legend>
+
+                    <label for="id_photo" class="form-label requiredField">
+                        Photo (2MB max):
+                    </label>
+                    {{ form.photo }}
+
+                    <label for="id_alt_text2" class="form-label requiredField mt-4">
+                        Alt Text:
+                    </label>
+                    <p>Suggestions: {{ form.suggested_alt_text }}</p>
+                    {{ form.alt_text }}
+
+                    <label for="id_tags" class="form-label requiredField mt-4">
+                        Tags (separate tags by comma):
+                    </label>
+                    <p>Suggestions: {{ form.suggested_tags }}</p>
+                    {{ form.tags }}
+                    
+                </fieldset>
+            </div>
             <div class="form-group">
                 <button class="upload-button btn btn-outline-info" type="submit">Upload</button>
             </div>

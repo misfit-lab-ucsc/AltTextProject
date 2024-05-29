@@ -28,11 +28,11 @@
   color: rgb(214,153,255);
 }
 
-/* Style for the input elements */
+/* Style for the input elements
 #div_id_tags input,
 #div_id_alt_text input {
   height: 150px;
-}
+}*/
 
 /* For upload file */
 #id_photo {
