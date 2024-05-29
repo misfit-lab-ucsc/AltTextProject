@@ -51,8 +51,15 @@ import os
 # importing temporary uploaded file to save image to memory
 from django.core.files.uploadedfile import TemporaryUploadedFile
 
+#importing boto, env for using amazon rekognoition
+import boto3
+import environ
+import os
+from pathlib import Path
 
-
+env = environ.Env()
+BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # -----------------------------------------------------------------------------------------------
@@ -137,16 +144,37 @@ def search(request):
         # render search bar template with context dictionary
         return render(request, 'posts/search_results.html', context)
 
+def check_image_safety(img):
+    session = boto3.Session(
+        aws_access_key_id=env('AWS_ACCESS_KEY_ID'),
+        aws_secret_access_key=env('AWS_SECRET_ACCESS_KEY'),
+        region_name='us-east-2'
+    )
+    client = session.client('rekognition')
+
+    image = img.open()
+    response = client.detect_moderation_labels(Image={'Bytes': image.read()})
+
+    for label in response['ModerationLabels']:
+        print (label['Name'] + ' : ' + str(label['Confidence']))
+        print (label['ParentName'])
+    return len(response['ModerationLabels']) != 0
 
 
 # view to create posts using class based views
 # POST CREATE VIEW NEED TO HANDLE DIFFERENT IMAGE TYPES WHEN SAVING AND RESIZING
 class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
-    fields = ['photo','alt_text']
+    fields = ['title','photo','alt_text']
     success_url = reverse_lazy('posts-create')
     def form_valid(self,form):
+        image = self.request.FILES['photo']
+        if check_image_safety(image):
+            messages.error(self.request,'Uploaded image is not appropriate. Please try again.')
+            return super().form_invalid(form)
+
         form.instance.author = self.request.user
+
         # message so feedback
         messages.success(self.request,'Your post was created successfully')
         # call the super method to save the form instance from the parent class
