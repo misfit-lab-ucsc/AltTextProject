@@ -1,8 +1,10 @@
 {% extends 'posts/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
     <!-- <h1>Create a Post</h1> -->
-    <div class="form p-4">
+    <link rel="stylesheet" href="{% static 'posts/post_form.css' %}">
+    <div class="form p-4 post-form">
         {% if messages %}
             {% for message in messages %}
                 <div class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
@@ -15,13 +17,14 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">
-                  Alt Text Post
+                  Upload
+                  <span class="need-help"><a href="">Need Help?</a></span>
                 </legend>
                 <!--render form as paragraph tag .as_p-->
                 {{ form|crispy}}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Post</button>
+                <button class="upload-button btn btn-outline-info" type="submit">Upload</button>
             </div>
         </form>
     </div>

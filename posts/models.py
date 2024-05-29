@@ -19,7 +19,7 @@ class Post(models.Model):
     # postspics
     photo = ResizedImageField(size=[300,300], upload_to='post_pics')
     # alttext need to change max length property later
-    alt_text = models.TextField(max_length=20,default='Please describe some text that accurately represents the image!')
+    alt_text = models.TextField(default='Write text that accurately describes the image!')
     # add param check date was posted
     date_posted = models.DateTimeField(default=timezone.now)
     # author of post
@@ -31,6 +31,11 @@ class Post(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
     approved = models.BooleanField(default=False)
+
+    tags = models.JSONField(default=dict)
+
+    suggested_tags = models.JSONField(default=dict)
+    suggested_alt_text = models.TextField(default='')
 
     # need to resize our posts need to override save method as well as use PILLOW
     # documented more in sample blog app folder
@@ -44,6 +49,7 @@ class Post(models.Model):
                 pass
         if request:
             self.last_updated_by = request.user
+        
         super().save(*args,**kwargs)
       
     # how we display our posts in db using our title

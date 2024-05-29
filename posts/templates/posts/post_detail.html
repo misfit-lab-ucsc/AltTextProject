@@ -5,7 +5,10 @@
             <img src="{{ object.photo.url }}" alt="{{ object.alt_text }}" class = 'postimg'>
         </div>
         <p>Posted {{ object.date_posted }}</p>
-        <p>Alt Text : {{ object.alt_text }}</p>
+        <p>Alt Text: {{ object.alt_text }}</p>
+        <p>Tags: {{ object.tags }}</p>
+        <p>Suggested Tags: {{ object.suggested_tags }}</p>
+        <p>Suggested Alt Text: {{ object.suggested_alt_text }}</p>
 
         <!-- update and delete posts based on some conditions  -->
         <!-- checking to see if the user is logged in  -->

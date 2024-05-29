@@ -9,7 +9,8 @@ from.models import Profile, User
 class UserRegisterForm(UserCreationForm):
     # dont forget we can edit param
     email = forms.EmailField()
-    is_staff = False
+    is_staff = False # disallow access /admin by default
+
     class Meta:
         model = User
         fields = ['username','email','password1','password2']
@@ -33,8 +34,6 @@ class UserUpdateForm(forms.ModelForm):
             self.user.cleaned_data = cleaned_data
             self.user.clean_username()
         return username
-
-
 
     class Meta:
         model = User

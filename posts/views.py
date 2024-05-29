@@ -23,7 +23,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.paginator import Paginator
 
 # importing our forms
-from .forms import SearchForm
+from .forms import SearchForm, PostForm
 
 # import generic class based views that django has to offer
 from django.views.generic import (
@@ -143,10 +143,13 @@ def search(request):
 # POST CREATE VIEW NEED TO HANDLE DIFFERENT IMAGE TYPES WHEN SAVING AND RESIZING
 class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
-    fields = ['photo','alt_text']
+    #fields = ['photo','alt_text','tags']
     success_url = reverse_lazy('posts-create')
+    form_class = PostForm
+
     def form_valid(self,form):
         form.instance.author = self.request.user
+        form.instance.tags = {"tags": form.instance.tags.split(',')}
         # message so feedback
         messages.success(self.request,'Your post was created successfully')
         # call the super method to save the form instance from the parent class

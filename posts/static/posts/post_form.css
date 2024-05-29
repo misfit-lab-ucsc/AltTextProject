@@ -1,0 +1,77 @@
+.post-form .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.post-form .form-label {
+  display: block;
+  font-size: 24px; /* Adjust the font size */
+  color: rgb(122,0,204); /* Set the color to purple */
+  font-weight: bold; /* Make the font bold */
+}
+
+/* Style for the input elements */
+.post-form input {
+  padding: 25px; /* Add padding */
+  box-sizing: border-box;
+  border: solid; /* Set border color */
+  border-radius: 50px; /* Add curved edges */
+  font-size: 16px; /* Adjust font size */
+  border-width: 5px; /* border width*/
+  color: rgb(122,0,204); /* Set border color to purple */ 
+  background-color: rgb(247,235,255); /* Set search bar color to purple */ 
+}
+/* Placeholder color */
+.post-form input::placeholder {
+  color: rgb(214,153,255);
+}
+
+/* Style for the input elements */
+#div_id_tags input,
+#div_id_alt_text input {
+  height: 150px;
+}
+
+/* For upload file */
+#id_photo {
+  padding-top: 84px;
+
+  box-sizing: border-box;
+  border: dashed; /* Set border color */
+  border-width: 5px;
+
+  font-size: 16px;
+  color: rgb(122,0,204);
+  height: 200px;
+
+  text-decoration: underline;
+  text-align: center;
+
+  cursor: pointer;
+  background-color: rgb(247,235,255);
+}
+
+.post-form .need-help a {
+  color: rgb(122,0,204);; /* Set the color of the text */
+  font-size: 24px; /* Adjust the font size */
+  text-decoration: underline; /* Add underline */
+}
+
+.post-form legend {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.post-form .upload-button {
+  padding: 8px 16px; /* Add padding */
+  border: none; /* Remove border */
+  border-radius: 50px; /* Add border radius */
+  background-color: rgb(122,0,204); /* Set background color */
+  color: rgb(247,235,255); /* Set text color */
+  cursor: pointer; /* Add cursor pointer */
+  font-size: 24px; /* Adjust the font size */
+}
